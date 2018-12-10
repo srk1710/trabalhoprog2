@@ -5,18 +5,16 @@
  */
 package MedHut;
 
-import Utilizadores.Utilizador;
-
 /**
  *
  * @author srk
  */
 public class Consultorio {
     
-    // indice de utilizador
+    // indice de consultorio
     public static int numConsultorio=0;
     
-    // variaveis utilizador
+    // variaveis consultorio
     private int idConsultorio=0;
     private String nome;
     private String morada;
