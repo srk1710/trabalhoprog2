@@ -20,8 +20,7 @@ public abstract class Conta extends Utilizador implements Cloneable {
     private String localidade;
 
     
-    
-    public Conta(String nome, int numcc, int nif, int contacto, String morada, String localidade, String user, String passwd) {
+public Conta(String nome, int numcc, int nif, int contacto, String morada, String localidade, String user, String passwd) {
         super(user, passwd);
         this.nome = nome;
         this.numcc = numcc;
@@ -30,7 +29,7 @@ public abstract class Conta extends Utilizador implements Cloneable {
         this.morada = morada;
         this.localidade = localidade;
     }
-    
-    
 
+
+//METODOS DE INSTANCIA
 }
