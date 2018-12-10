@@ -30,6 +30,8 @@ public Conta(String nome, int numcc, int nif, int contacto, String morada, Strin
         this.localidade = localidade;
     }
 
+
+    //METODOS DE INSTANCIA
     public String getNome() {
         return nome;
     }
@@ -78,5 +80,5 @@ public Conta(String nome, int numcc, int nif, int contacto, String morada, Strin
         this.localidade = localidade;
     }
 
-//METODOS DE INSTANCIA
+
 }
