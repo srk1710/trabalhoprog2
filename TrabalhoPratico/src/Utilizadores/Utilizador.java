@@ -5,11 +5,12 @@
  */
 package Utilizadores;
 
+import java.io.Serializable;
 /**
  *
  * @author srk
  */
-public abstract class Utilizador {
+public abstract class Utilizador implements Serializable, Cloneable{
     
     // indice de utilizador
     public static int numUtilizador=0;
