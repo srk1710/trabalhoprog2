@@ -9,7 +9,7 @@ package Utilizadores;
  *
  * @author Pedro Silva e Diogo Correia
  */
-public class Admin extends Utilizador{
+public class Admin extends Utilizador {
     
     //CONSTRUTORES
     public Admin(String user, String passwd) {
