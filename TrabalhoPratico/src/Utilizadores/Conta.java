@@ -7,7 +7,7 @@ package Utilizadores;
 
 /**
  *
- * @author Pedro Silva
+ * @author Pedro Silva e Diogo Correia
  */
 public abstract class Conta extends Utilizador implements Cloneable {
     
@@ -80,5 +80,11 @@ public Conta(String nome, int numcc, int nif, int contacto, String morada, Strin
         this.localidade = localidade;
     }
 
+    public abstract Conta getConta();
+    
+    @Override
+    public Object clone () throws CloneNotSupportedException {
+        return super.clone() ;
+    }
 
 }
