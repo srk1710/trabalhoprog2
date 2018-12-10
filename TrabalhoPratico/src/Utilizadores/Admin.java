@@ -7,8 +7,13 @@ package Utilizadores;
 
 /**
  *
- * @author Pedro Silva
+ * @author Pedro Silva e Diogo Correia
  */
-public class Admin {
+public class Admin extends Utilizador{
+    
+    //CONSTRUTORES
+    public Admin(String user, String passwd) {
+        super(user, passwd);
+    }
     
 }
