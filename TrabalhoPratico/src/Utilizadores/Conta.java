@@ -18,9 +18,10 @@ public abstract class Conta extends Utilizador implements Cloneable {
     private int contacto;
     private String morada;
     private String localidade;
-}
 
-public Conta(String nome, int numcc, int nif, int contacto, String morada, String localidade, String user, String passwd) {
+    
+    
+    public Conta(String nome, int numcc, int nif, int contacto, String morada, String localidade, String user, String passwd) {
         super(user, passwd);
         this.nome = nome;
         this.numcc = numcc;
@@ -29,3 +30,7 @@ public Conta(String nome, int numcc, int nif, int contacto, String morada, Strin
         this.morada = morada;
         this.localidade = localidade;
     }
+    
+    
+
+}
