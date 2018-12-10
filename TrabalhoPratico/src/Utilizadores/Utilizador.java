@@ -19,8 +19,8 @@ public abstract class Utilizador implements Serializable, Cloneable{
     private int id=0;
     private String user;
     private String passwd;
-    private boolean online = false;
-    private boolean ativo = true;
+  //private boolean online = false;
+  //private boolean ativo = true;
     
     public Utilizador(String user, String passwd){
         id = Utilizador.numUtilizador + 1;
@@ -37,6 +37,7 @@ public abstract class Utilizador implements Serializable, Cloneable{
         this.id = id;
     }
 
+    /*
     public void setOnline(boolean online) {
         this.online = online;
     }
@@ -44,6 +45,8 @@ public abstract class Utilizador implements Serializable, Cloneable{
     public void setAtivo(boolean ativo) {
         this.ativo = ativo;
     }
+
+    */
 
     public void setUser(String user) {
         this.user = user;
@@ -70,6 +73,7 @@ public abstract class Utilizador implements Serializable, Cloneable{
         return passwd;
     }
 
+    /*
     public boolean isOnline() {
         return online;
     }
@@ -78,7 +82,7 @@ public abstract class Utilizador implements Serializable, Cloneable{
         return ativo;
     }
     
-    
+    */
     
     
     
