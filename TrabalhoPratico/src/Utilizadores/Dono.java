@@ -16,7 +16,7 @@ public class Dono extends Conta implements Cloneable {
     //Variaveis de Instancia
     private List<Consultorio> consultorios;
     
-    
+    //Construtor
     public Dono(String nome, int numcc, int nif, int contacto, String morada, String localidade, String user, String passwd){
         super(nome, numcc, nif, contacto, morada, localidade, user, passwd);
         this.consultorios = new ArrayList<>();
