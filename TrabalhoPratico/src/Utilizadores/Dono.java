@@ -5,10 +5,11 @@
  */
 package Utilizadores;
 
+import MedHut.Consultorio;
 import java.util.*;
 /**
  *
- * @author Pedro Silva
+ * @author Pedro Silva e Diogo Correia
  */
 public class Dono extends Conta implements Cloneable {
     
@@ -19,6 +20,20 @@ public class Dono extends Conta implements Cloneable {
     public Dono(String nome, int numcc, int nif, int contacto, String morada, String localidade, String user, String passwd){
         super(nome, numcc, nif, contacto, morada, localidade, user, passwd);
         this.consultorios = new ArrayList<>();
+    }
+    
+    //Metodos de Instancia
+    
+    public List<Consultorio> getConsultorio(){
+        return consultorios;
+    }
+    
+    public void setConsultorio(List<Consultorio> consultorios){
+        this.consultorios = consultorios;
+    }
+    
+    public void addConsultorio(Consultorio consultorio){
+        this.consultorios.add(consultorio);
     }
     
     
