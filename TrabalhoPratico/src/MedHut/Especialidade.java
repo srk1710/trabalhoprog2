@@ -7,7 +7,7 @@ package MedHut;
 
 /**
  *
- * @author srk
+ * @author Pedro Silva e Diogo Correia
  */
 public enum Especialidade {
     OFTALMOLOGIA,

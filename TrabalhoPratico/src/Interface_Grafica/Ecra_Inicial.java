@@ -120,17 +120,20 @@ public class Ecra_Inicial extends javax.swing.JFrame {
         });
     }
     
-    public void AvançarParaPainel(JPanel painelOn, JPanel painelOf){
-         this.stackPanels.add(painelOf) ;
-         this.painelVisivel.setVisible(false);
-         this.painelVisivel = painelOn ;
-         this.setContentPane(this.painelVisivel);
-         this.painelVisivel.setVisible(true);
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Panelinicial;
     private javax.swing.JButton btn_Entrar;
     private javax.swing.JButton btn_Registar;
     // End of variables declaration//GEN-END:variables
+
+private void jbtnRegistarActionPerformed(java.awt.event.ActionEvent evt) {                                           
+        // TODO add your handling code here:
+        FormCliente cliP = new FormCliente();
+        
+        this.painelVisivel.setVisible(false);
+        this.painelVisivel = cliP;
+        this.setContentPane(this.painelVisivel);
+        this.painelVisivel.setVisible(true);
+    }
 }
