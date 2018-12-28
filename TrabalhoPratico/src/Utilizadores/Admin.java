@@ -5,11 +5,13 @@
  */
 package Utilizadores;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Pedro Silva e Diogo Correia
  */
-public class Admin extends Utilizador {
+public class Admin extends Utilizador implements Serializable{
     
     //CONSTRUTORES
     public Admin(String user, String passwd) {

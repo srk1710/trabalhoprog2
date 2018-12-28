@@ -6,12 +6,13 @@
 package Utilizadores;
 
 import MedHut.Consultorio;
+import java.io.Serializable;
 import java.util.*;
 /**
  *
  * @author Pedro Silva e Diogo Correia
  */
-public class Dono extends Conta implements Cloneable {
+public class Dono extends Conta implements Serializable, Cloneable {
     
     //Variaveis de Instancia
     private List<Consultorio> consultorios;

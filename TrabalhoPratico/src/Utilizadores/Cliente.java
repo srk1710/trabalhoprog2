@@ -6,12 +6,13 @@
 package Utilizadores;
 
 import java.util.*;
-import MedHut.Marcacao;
+import MedHut.*;
+import java.io.Serializable;
 /**
  *
  * @author Pedro Silva e Diogo Correia
  */
-public class Cliente extends Conta implements Cloneable {
+public class Cliente extends Conta implements Serializable,Cloneable {
     
     //Variaveis de instancia
     private List <Marcacao> marcacoes ;

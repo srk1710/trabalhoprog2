@@ -10,5 +10,5 @@ package MedHut;
  * @author srk
  */
 public class Marcacao {
-    
+    private 
 }

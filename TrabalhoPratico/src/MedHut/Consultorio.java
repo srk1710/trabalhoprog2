@@ -27,7 +27,6 @@ public class Consultorio implements Serializable{
     private Dono donoConsultorio;
     
     
-    
     public Consultorio(String nome, String morada, String localidade, Especialidade especialidade, Dono donoConsultorio){
         idConsultorio = Consultorio.numConsultorio + 1;
         this.nome=nome;
