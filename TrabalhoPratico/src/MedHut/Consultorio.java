@@ -5,11 +5,15 @@
  */
 package MedHut;
 
+import Utilizadores.Dono;
+import java.io.Serializable;
+
 /**
  *
  * @author srk
  */
-public class Consultorio {
+public class Consultorio implements Serializable{
+    //corresponde ao consultorio
     
     // indice de consultorio
     public static int numConsultorio=0;
@@ -20,14 +24,17 @@ public class Consultorio {
     private String morada;
     private String localidade;
     private Especialidade especialidade;
+    private Dono donoConsultorio;
     
     
-    public Consultorio(String nome, String morada, String localidade, Especialidade especialidade){
+    
+    public Consultorio(String nome, String morada, String localidade, Especialidade especialidade, Dono donoConsultorio){
         idConsultorio = Consultorio.numConsultorio + 1;
         this.nome=nome;
         this.morada=morada;
         this.localidade=localidade;
         this.especialidade=especialidade;
+        this.donoConsultorio=donoConsultorio;
         Consultorio.numConsultorio ++;
     }
 
@@ -77,6 +84,14 @@ public class Consultorio {
 
     public void setEspecialidade(Especialidade especialidade) {
         this.especialidade = especialidade;
+    }
+
+    public Dono getDonoConsultorio() {
+        return donoConsultorio;
+    }
+
+    public void setDonoConsultorio(Dono donoConsultorio) {
+        this.donoConsultorio = donoConsultorio;
     }
     
     

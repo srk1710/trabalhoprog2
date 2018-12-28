@@ -12,12 +12,16 @@ import Utilizadores.*;
  *
  * @author srk
  */
-public class Repositorio {
+public class Repositorio implements Serializable{
     
     // mano aqui sao declaradas aqueles maps que ele tem no enunciado
     // mas mm assim acho que é preciso ter-mos um Set/list de cada classe
     // para conseguires guardar um certo numero de classes q sao instanciadas
     // temos de construir as classes que estão dentro de Med Hut primeiro
+    private List<Utilizador> utilizadores;
+    private Map<String,enum<Especialidade>> EspecialidadeConsultorio;
+    
+    
     
     private static Repositorio bd=null;
     
