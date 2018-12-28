@@ -7,6 +7,7 @@ package MedHut;
 
 import Utilizadores.Dono;
 import java.io.Serializable;
+import java.util.*;
 
 /**
  *
@@ -25,6 +26,7 @@ public class Consultorio implements Serializable{
     private String localidade;
     private Especialidade especialidade;
     private Dono donoConsultorio;
+    private List<Marcacao> marcacoes;
     
     
     public Consultorio(String nome, String morada, String localidade, Especialidade especialidade, Dono donoConsultorio){
@@ -34,6 +36,7 @@ public class Consultorio implements Serializable{
         this.localidade=localidade;
         this.especialidade=especialidade;
         this.donoConsultorio=donoConsultorio;
+        this.marcacoes = new ArrayList<>();
         Consultorio.numConsultorio ++;
     }
 
@@ -91,6 +94,14 @@ public class Consultorio implements Serializable{
 
     public void setDonoConsultorio(Dono donoConsultorio) {
         this.donoConsultorio = donoConsultorio;
+    }
+
+    public List<Marcacao> getMarcacoes() {
+        return marcacoes;
+    }
+
+    public void setMarcacoes(List<Marcacao> marcacoes) {
+        this.marcacoes = marcacoes;
     }
     
     

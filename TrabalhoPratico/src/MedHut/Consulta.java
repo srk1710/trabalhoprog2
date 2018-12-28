@@ -25,6 +25,7 @@ public class Consulta extends Marcacao implements Serializable{
 
     public Consulta(Date dataConsulta, Cliente cliente) {
         super(dataConsulta, cliente);
+        this.despesas = new HashSet<>();
     }
 
     public float getPreco() {
