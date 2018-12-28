@@ -19,7 +19,7 @@ public class Repositorio implements Serializable{
     // para conseguires guardar um certo numero de classes q sao instanciadas
     // temos de construir as classes que estão dentro de Med Hut primeiro
     private List<Utilizador> utilizadores;
-    private Map<String,enum<Especialidade>> EspecialidadeConsultorio;
+    private Map<String,Especialidade> EspecialidadeConsultorio;
     
     
     

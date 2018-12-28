@@ -15,31 +15,16 @@ import java.io.Serializable;
  */
 public class Consulta extends Marcacao implements Serializable{
     
-    private float duracaoConsulta;
-    private float duracaoMaxima=1;    // corresponde à duracao maxima em horas
+  // corresponde à duracao maxima em horas
     private float preco;
     private Date inicioConsulta;
+    private Date fimConsulta;
     private boolean pago;
     private Set<ArtigoDespesa> despesas;
+    private FaturaRecibo fatura;
 
     public Consulta(Date dataConsulta, Cliente cliente) {
         super(dataConsulta, cliente);
-    }
-
-    public float getDuracaoConsulta() {
-        return duracaoConsulta;
-    }
-
-    public void setDuracaoConsulta(float duracaoConsulta) {
-        this.duracaoConsulta = duracaoConsulta;
-    }
-
-    public float getDuracaoMaxima() {
-        return duracaoMaxima;
-    }
-
-    public void setDuracaoMaxima(float duracaoMaxima) {
-        this.duracaoMaxima = duracaoMaxima;
     }
 
     public float getPreco() {
@@ -58,6 +43,15 @@ public class Consulta extends Marcacao implements Serializable{
         this.inicioConsulta = inicioConsulta;
     }
 
+    public Date getFimConsulta() {
+        return fimConsulta;
+    }
+
+    public void setFimConsulta(Date fimConsulta) {
+        this.fimConsulta = fimConsulta;
+    }
+    
+
     public boolean isPago() {
         return pago;
     }
@@ -72,6 +66,14 @@ public class Consulta extends Marcacao implements Serializable{
 
     public void setDespesas(Set<ArtigoDespesa> despesas) {
         this.despesas = despesas;
+    }
+
+    public FaturaRecibo getFatura() {
+        return fatura;
+    }
+
+    public void setFatura(FaturaRecibo fatura) {
+        this.fatura = fatura;
     }
     
     
