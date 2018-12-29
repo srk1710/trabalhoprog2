@@ -37,8 +37,7 @@ public class Repositorio implements Serializable{
     // getter e adicionar do list e dos maps
     // da uma olhadela no repositorio do exemplo que está no moodle
     
-    
-    
+       
     public static void serializar(String filename) {
         // Serializar um objeto para ficheiro
         try(FileOutputStream fileOut = new FileOutputStream(filename);
