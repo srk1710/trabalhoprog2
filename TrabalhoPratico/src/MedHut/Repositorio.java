@@ -51,12 +51,12 @@ public class Repositorio implements Serializable{
     
     
     
-     public synchronized void signINConta (Conta conta){
+     public synchronized void RegistarConta (Conta conta){
           boolean existe = false ;
           
-          for(Utilizador uti: this.utilizadores){
-              if(uti instanceof Conta){
-                  if (((Conta)uti).getUser().equals(conta.getUser())||((Conta)uti).getId()==conta.getId()||((Conta)uti).getNumcc()==conta.getNumcc()||((Conta)uti).getNif()==conta.getNif()||((Conta)uti).getContacto()==conta.getContacto()) {
+          for(Utilizador util: this.utilizadores){
+              if(util instanceof Conta){
+                  if (((Conta)util).getUser().equals(conta.getUser())||((Conta)util).getId()==conta.getId()||((Conta)util).getNumcc()==conta.getNumcc()||((Conta)util).getNif()==conta.getNif()||((Conta)util).getContacto()==conta.getContacto()) {
                     existe = true ;
                     break ;
                 }
