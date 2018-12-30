@@ -58,11 +58,11 @@ public class Ecra_Inicial extends javax.swing.JFrame {
         PanelinicialLayout.setVerticalGroup(
             PanelinicialLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelinicialLayout.createSequentialGroup()
-                .addContainerGap(146, Short.MAX_VALUE)
+                .addContainerGap(106, Short.MAX_VALUE)
                 .addComponent(btn_Entrar)
-                .addGap(36, 36, 36)
+                .addGap(45, 45, 45)
                 .addComponent(btn_Registar)
-                .addGap(72, 72, 72))
+                .addGap(103, 103, 103))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

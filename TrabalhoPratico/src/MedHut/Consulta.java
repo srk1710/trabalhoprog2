@@ -1,4 +1,4 @@
-/*
+                      /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -60,7 +60,7 @@ public class Consulta extends Marcacao implements Serializable{
         this.pago = pago;
     }
 
-    public Set<ArtigoDespesa> getDespesas() {
+    public Set<ArtigoDespesa> getDespesas() {                                     
         return despesas;
     }
 

@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -17,19 +17,16 @@ public class Repositorio implements Serializable{
     
     private Map<Consultorio,Especialidade> ConsultorioEspecialidade;
     private Map<Consultorio, String> ConsultorioLocalidade;
-    private List<Dono> donos;
-    private List<Cliente> clientes;
-    private List<Admin> admins;
+    private List<Utilizador> utilizadores;
     
     
     private static Repositorio bd=null;
     
-    Repositorio(){
+    public Repositorio(){
         this.ConsultorioEspecialidade = new HashMap<>();
         this.ConsultorioLocalidade = new HashMap<>();
-        this.donos = new ArrayList<>();
-        this.clientes = new ArrayList<>();
-        this.admins = new ArrayList<>();
+        utilizadores = new Arraylist<>();
+        utilizadores.add(new Admin ("admin", "admin")) ; //Utilizador por defeito
     }
     
     public static Repositorio getInstance(){
