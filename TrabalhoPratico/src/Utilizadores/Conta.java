@@ -82,9 +82,5 @@ public abstract class Conta extends Utilizador implements Cloneable {
 
     public abstract Conta getConta();
     
-    @Override
-    public Object clone () throws CloneNotSupportedException {
-        return super.clone() ;
-    }
 
 }

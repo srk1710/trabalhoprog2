@@ -14,16 +14,22 @@ import Utilizadores.*;
  */
 public class Repositorio implements Serializable{
     
-    private List<Utilizador> utilizadores;
+    
     private Map<Consultorio,Especialidade> ConsultorioEspecialidade;
     private Map<Consultorio, String> ConsultorioLocalidade;
+    private List<Dono> donos;
+    private List<Cliente> clientes;
+    private List<Admin> admins;
+    
     
     private static Repositorio bd=null;
     
     Repositorio(){
-        this.utilizadores = new ArrayList<>();
         this.ConsultorioEspecialidade = new HashMap<>();
         this.ConsultorioLocalidade = new HashMap<>();
+        this.donos = new ArrayList<>();
+        this.clientes = new ArrayList<>();
+        this.admins = new ArrayList<>();
     }
     
     public static Repositorio getInstance(){

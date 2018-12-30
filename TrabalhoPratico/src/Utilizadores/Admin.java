@@ -13,7 +13,7 @@ import java.io.Serializable;
  */
 public class Admin extends Utilizador implements Serializable{
     
-    //CONSTRUTORES
+    //CONSTRUTOR
     public Admin(String user, String passwd) {
         super(user, passwd);
     }

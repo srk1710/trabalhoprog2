@@ -15,7 +15,6 @@ import java.io.Serializable;
  */
 public class Consulta extends Marcacao implements Serializable{
     
-  // corresponde à duracao maxima em horas
     private float preco;
     private Date inicioConsulta;
     private Date fimConsulta;

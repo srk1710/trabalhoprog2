@@ -5,7 +5,6 @@
  */
 package MedHut;
 import java.util.*;
-import Utilizadores.*;
 import java.io.Serializable;
 
 
@@ -30,5 +29,47 @@ public class FaturaRecibo implements Serializable{
         this.valorTotal = valorTotal;
         this.dataFatura = new Date();
     }
+
+    public Date getDataFatura() {
+        return dataFatura;
+    }
+
+    public void setDataFatura(Date dataFatura) {
+        this.dataFatura = dataFatura;
+    }
+
+    public float getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(float valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+
+    public float getValorPago() {
+        return valorPago;
+    }
+
+    public void setValorPago(float valorPago) {
+        this.valorPago = valorPago;
+    }
+
+    public boolean isAnulada() {
+        return anulada;
+    }
+
+    public void setAnulada(boolean anulada) {
+        this.anulada = anulada;
+    }
+
+    public Consulta getConsulta() {
+        return consulta;
+    }
+
+    public void setConsulta(Consulta consulta) {
+        this.consulta = consulta;
+    }
+    
+    
     
 }

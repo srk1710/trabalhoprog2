@@ -12,7 +12,7 @@ import java.util.*;
  *
  * @author Pedro Silva e Diogo Correia
  */
-public class Dono extends Conta implements Serializable, Cloneable {
+public class Dono extends Conta implements Serializable {
     
     //Variaveis de Instancia
     private List<Consultorio> consultorios;
@@ -36,15 +36,11 @@ public class Dono extends Conta implements Serializable, Cloneable {
     public void addConsultorio(Consultorio consultorio){
         this.consultorios.add(consultorio);
     }
-    
-    
-@Override
-    public Object clone() throws CloneNotSupportedException {
-        return super.clone();
-    }
 
     @Override
     public Conta getConta() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
+   
 }

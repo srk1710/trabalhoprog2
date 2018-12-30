@@ -12,7 +12,7 @@ import java.io.Serializable;
  *
  * @author Pedro Silva e Diogo Correia
  */
-public class Cliente extends Conta implements Serializable,Cloneable {
+public class Cliente extends Conta implements Serializable {
     
     //Variaveis de instancia
     private List <Marcacao> marcacoes ;
@@ -45,15 +45,11 @@ public class Cliente extends Conta implements Serializable,Cloneable {
     public void setPontos(int pontos) {
         this.pontos = pontos;
     }
-    
-    @Override
-    public Object clone () throws CloneNotSupportedException {
-        return super.clone() ;
-    }
 
     @Override
     public Conta getConta() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
     
 }

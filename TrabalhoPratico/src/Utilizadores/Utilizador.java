@@ -10,7 +10,7 @@ import java.io.Serializable;
  *
  * @author srk
  */
-public abstract class Utilizador implements Serializable, Cloneable{
+public abstract class Utilizador implements Serializable{
     
     // indice de utilizador
     public static int numUtilizador=0;
@@ -59,9 +59,6 @@ public abstract class Utilizador implements Serializable, Cloneable{
 
     public String getPasswd() {
         return passwd;
-    }
-
-    
-    
+    } 
     
 }
