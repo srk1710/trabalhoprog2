@@ -56,8 +56,16 @@ public class Repositorio implements Serializable{
           
           for(Utilizador uti: this.utilizadores){
               if(uti instanceof Conta){
-                  
-              }
+                  if (((Conta)uti).getUser().equals(conta.getUser())||((Conta)uti).getId()==conta.getId()||((Conta)uti).getNumcc()==conta.getNumcc()||((Conta)uti).getNif()==conta.getNif()||((Conta)uti).getContacto()==conta.getContacto()) {
+                    existe = true ;
+                    break ;
+                }
+            }
+          }if (existe) {
+              System.out.println("Erro!");
+          }
+          else{
+              this.utilizadores.add(conta) ;
           }
      }
     
