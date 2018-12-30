@@ -25,8 +25,20 @@ public class Repositorio implements Serializable{
     public Repositorio(){
         this.ConsultorioEspecialidade = new HashMap<>();
         this.ConsultorioLocalidade = new HashMap<>();
-        utilizadores = new Arraylist<>();
+        utilizadores = new ArrayList<>();
         utilizadores.add(new Admin ("admin", "admin")) ; //Utilizador por defeito
+    }
+    
+    //MÉTODOS DE INSTÂNCIA
+    // Devolve a lista de utilizadores do sistema.
+         
+    public synchronized List<Utilizador> getUtilizadores() {
+        return utilizadores;
+    }
+    
+    // Calcula o número de utilizadores.
+    public synchronized int getNumeroUtilizadores () {
+        return utilizadores.size() ;
     }
     
     public static Repositorio getInstance(){
@@ -36,6 +48,8 @@ public class Repositorio implements Serializable{
         
         return bd;
     }
+    
+     public synchronized void signINConta (Conta conta)
     
     // getter e adicionar do list e dos maps
     // da uma olhadela no repositorio do exemplo que está no moodle
