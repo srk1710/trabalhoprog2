@@ -29,6 +29,14 @@ public class Repositorio implements Serializable{
         utilizadores.add(new Admin ("admin", "admin")) ; //Utilizador por defeito
     }
     
+    
+    public static Repositorio getInstance(){
+        if( bd == null){
+            bd = new Repositorio();
+        }
+        
+        return bd;
+    }
     //MÉTODOS DE INSTÂNCIA
     // Devolve a lista de utilizadores do sistema.
          
@@ -41,15 +49,11 @@ public class Repositorio implements Serializable{
         return utilizadores.size() ;
     }
     
-    public static Repositorio getInstance(){
-        if( bd == null){
-            bd = new Repositorio();
-        }
-        
-        return bd;
-    }
     
-     public synchronized void signINConta (Conta conta)
+    
+     public synchronized void signINConta (Conta conta){
+          boolean existe = false ;
+     }
     
     // getter e adicionar do list e dos maps
     // da uma olhadela no repositorio do exemplo que está no moodle
