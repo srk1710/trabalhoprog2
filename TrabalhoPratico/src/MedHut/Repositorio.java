@@ -53,6 +53,12 @@ public class Repositorio implements Serializable{
     
      public synchronized void signINConta (Conta conta){
           boolean existe = false ;
+          
+          for(Utilizador uti: this.utilizadores){
+              if(uti instanceof Conta){
+                  
+              }
+          }
      }
     
     // getter e adicionar do list e dos maps
