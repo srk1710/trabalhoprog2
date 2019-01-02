@@ -36,6 +36,7 @@ public class Ecra_Inicial extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         btn_Registar.setText("Registar");
+        btn_Registar.setName("Registar"); // NOI18N
         btn_Registar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_RegistarActionPerformed(evt);
@@ -43,6 +44,11 @@ public class Ecra_Inicial extends javax.swing.JFrame {
         });
 
         btn_Entrar.setText("Entrar");
+        btn_Entrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_EntrarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PanelinicialLayout = new javax.swing.GroupLayout(Panelinicial);
         Panelinicial.setLayout(PanelinicialLayout);
@@ -82,8 +88,13 @@ public class Ecra_Inicial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_RegistarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RegistarActionPerformed
-        
+    Ecra_Registar visivel = new Ecra_Registar();
+        visivel.setVisible(true);
     }//GEN-LAST:event_btn_RegistarActionPerformed
+
+    private void btn_EntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EntrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_EntrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -127,13 +138,5 @@ public class Ecra_Inicial extends javax.swing.JFrame {
     private javax.swing.JButton btn_Registar;
     // End of variables declaration//GEN-END:variables
 
-private void jbtnRegistarActionPerformed(java.awt.event.ActionEvent evt) {                                           
-        // TODO add your handling code here:
-        FormCliente cliP = new FormCliente();
-        
-        this.painelVisivel.setVisible(false);
-        this.painelVisivel = cliP;
-        this.setContentPane(this.painelVisivel);
-        this.painelVisivel.setVisible(true);
-    }
+
 }

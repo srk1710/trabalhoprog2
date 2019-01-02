@@ -18,6 +18,15 @@ public class Ecra_Registar extends javax.swing.JPanel {
         initComponents();
         
     }
+    
+    public static void main(String[] args) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new Ecra_Registar().setVisible(true);
+            }
+        });
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,8 +46,7 @@ public class Ecra_Registar extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-
-        jComboBoxTipoUtilizador = new javax.swing.JComboBox<>();        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBoxTipoUtilizador = new javax.swing.JComboBox<>();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
@@ -48,6 +56,7 @@ public class Ecra_Registar extends javax.swing.JPanel {
         jTextField7 = new javax.swing.JTextField();
         jTextField8 = new javax.swing.JTextField();
 
+        setName(""); // NOI18N
 
         jLabel1.setText("Registo");
 
