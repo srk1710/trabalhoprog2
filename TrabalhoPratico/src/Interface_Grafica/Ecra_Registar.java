@@ -47,9 +47,6 @@ public class Ecra_Registar extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-
-        jComboBoxTipoUtilizador = new javax.swing.JComboBox<>();
-
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jTextField3 = new javax.swing.JTextField();
@@ -62,10 +59,10 @@ public class Ecra_Registar extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         jComboBoxTipoUtilizador = new javax.swing.JComboBox<>();
 
+        setName(""); // NOI18N
+
         lbl_Registo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         lbl_Registo.setText("Registo");
-
-
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Nome:");
@@ -189,9 +186,9 @@ public class Ecra_Registar extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel3)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
