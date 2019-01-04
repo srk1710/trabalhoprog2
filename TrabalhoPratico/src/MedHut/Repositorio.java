@@ -4,9 +4,11 @@
  * and open the template in the editor.
  */
 package MedHut;
+import Exceptions.MensagemException;
 import java.io.*;
 import java.util.*;
 import Utilizadores.*;
+import Interface_Grafica.*;
 
 /**
  *
@@ -49,28 +51,41 @@ public class Repositorio implements Serializable{
         return utilizadores.size() ;
     }
     
+            //Adicionar uma conta
+            //Garante que nao se repete o nome de utilizador , numero de cc, nif e contacto
     
-    
-     public synchronized void RegistarConta (Conta conta){
+     public synchronized void RegistarConta (Conta conta) throws MensagemException{
           boolean existe = false ;
-          
+          Utilizador user = null;
           for(Utilizador util: this.utilizadores){
               if(util instanceof Conta){
                   if (((Conta)util).getUser().equals(conta.getUser())||((Conta)util).getId()==conta.getId()||((Conta)util).getNumcc()==conta.getNumcc()||((Conta)util).getNif()==conta.getNif()||((Conta)util).getContacto()==conta.getContacto()) {
                     existe = true ;
+                    user = util;
                     break ;
                 }
             }
           }if (existe) {
-              System.out.println("Erro!");
-          }
+             if (((Conta)user).getUser().equals(conta.getUser())) {
+                 throw new MensagemException("O nome " + conta.getUser() + "já existe!");
+             }
+             if (((Conta)user).getNumcc()==conta.getNumcc()) {
+                 throw new MensagemException("O número de CC " + conta.getNumcc()+ "já existe!");
+             }
+             if (((Conta)user).getNif()==conta.getNif()) {
+                 throw new MensagemException("O NIF" + conta.getNif()+ "já existe!");
+             }
+             if (((Conta)user).getContacto()==conta.getContacto()) {
+                 throw new MensagemException("O número de contacto " + conta.getContacto()+ "já existe!");
+             }
+             
+         }
           else{
               this.utilizadores.add(conta) ;
           }
      }
     
-    // getter e adicionar do list e dos maps
-    // da uma olhadela no repositorio do exemplo que está no moodle
+    
     
        
     public static void serializar(String filename) {
