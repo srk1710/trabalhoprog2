@@ -4,7 +4,10 @@
  * and open the template in the editor.
  */
 package MedHut;
-import Exceptions.MensagemException;
+import Exceptions.ContactoRepetidoException;
+import Exceptions.NIFRepetidoException;
+import Exceptions.NumCCRepetidoException;
+import Exceptions.UsernameRepetidoException;
 import java.io.*;
 import java.util.*;
 import Utilizadores.*;
@@ -54,29 +57,29 @@ public class Repositorio implements Serializable{
             //Adicionar uma conta
             //Garante que nao se repete o nome de utilizador , numero de cc, nif e contacto
     
-     public synchronized void RegistarConta (Conta conta) throws MensagemException{
+     public synchronized void RegistarConta (Conta conta) throws UsernameRepetidoException, NumCCRepetidoException, NIFRepetidoException, ContactoRepetidoException{
           boolean existe = false ;
-          Utilizador user = null;
+          Utilizador utilizador = null;
           for(Utilizador util: this.utilizadores){
               if(util instanceof Conta){
                   if (((Conta)util).getUser().equals(conta.getUser())||((Conta)util).getId()==conta.getId()||((Conta)util).getNumcc()==conta.getNumcc()||((Conta)util).getNif()==conta.getNif()||((Conta)util).getContacto()==conta.getContacto()) {
                     existe = true ;
-                    user = util;
+                    utilizador = util;
                     break ;
                 }
             }
           }if (existe) {
-             if (((Conta)user).getUser().equals(conta.getUser())) {
-                 throw new MensagemException("O nome " + conta.getUser() + "já existe!");
+             if (((Conta)utilizador).getUser().equals(conta.getUser())) {
+                 throw new UsernameRepetidoException("O nome " + conta.getUser() + "já existe!");
              }
-             if (((Conta)user).getNumcc()==conta.getNumcc()) {
-                 throw new MensagemException("O número de CC " + conta.getNumcc()+ "já existe!");
+             if (((Conta)utilizador).getNumcc()==conta.getNumcc()) {
+                 throw new NumCCRepetidoException("O número de CC " + conta.getNumcc()+ "já existe!");
              }
-             if (((Conta)user).getNif()==conta.getNif()) {
-                 throw new MensagemException("O NIF" + conta.getNif()+ "já existe!");
+             if (((Conta)utilizador).getNif()==conta.getNif()) {
+                 throw new NIFRepetidoException("O NIF" + conta.getNif()+ "já existe!");
              }
-             if (((Conta)user).getContacto()==conta.getContacto()) {
-                 throw new MensagemException("O número de contacto " + conta.getContacto()+ "já existe!");
+             if (((Conta)utilizador).getContacto()==conta.getContacto()) {
+                 throw new ContactoRepetidoException("O número de contacto " + conta.getContacto()+ "já existe!");
              }
              
          }

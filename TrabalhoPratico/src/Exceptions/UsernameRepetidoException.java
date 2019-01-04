@@ -9,12 +9,11 @@ package Exceptions;
  *
  * @author srk
  */
-public class MensagemException extends Exception{
-    public MensagemException (String msg){
+public class UsernameRepetidoException extends Exception{
+    public UsernameRepetidoException (String msg) {
         super(msg);
     }
-    public MensagemException () {
+    public UsernameRepetidoException(){
         super();
     }
-    
 }
