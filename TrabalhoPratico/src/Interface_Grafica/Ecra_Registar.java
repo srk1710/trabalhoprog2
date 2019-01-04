@@ -405,8 +405,6 @@ public class Ecra_Registar extends javax.swing.JPanel {
                 try {
                     Repositorio.getInstance().RegistarConta(new Dono(this.jTextFieldNome.getText(), cc, nif, contacto, this.jTextFieldMorada.getText(), this.jTextFieldLocalidade.getText(), this.jTextFieldUser.getText(), this.jTextFieldPasswd.getText()));
                     Repositorio.serializar("Repositorio");
-                } catch (UsernameRepetidoException ex) {
-                    this.jLabelUserRepetido.setVisible(true);
                 }
                 catch (NumCCRepetidoException ex) {
                     this.jLabelCCRepetido.setVisible(true);
@@ -416,6 +414,9 @@ public class Ecra_Registar extends javax.swing.JPanel {
                 }
                 catch (ContactoRepetidoException ex) {
                     this.jLabelContactoRepetido.setVisible(true);
+                }
+                catch (UsernameRepetidoException ex) {
+                    this.jLabelUserRepetido.setVisible(true);
                 }
                 break;
             default:

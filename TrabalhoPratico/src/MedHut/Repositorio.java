@@ -87,6 +87,39 @@ public class Repositorio implements Serializable{
               this.utilizadores.add(conta) ;
           }
      }
+     
+            // devolve o número de clientes
+    public synchronized int getNumeroClientes(){
+        int count=0;
+        for(Utilizador u: this.utilizadores){
+            if(u instanceof Cliente){
+                count++;
+            }
+        }
+        return count;
+    }
+    
+            //devolve o número de admins
+    public synchronized int getNumeroAdmins(){
+        int count=0;
+        for(Utilizador u: this.utilizadores){
+            if(u instanceof Admin){
+                count++;
+            }
+        }
+        return count;
+    }
+    
+            //devolve o número de donos
+    public synchronized int getNumeroDonos(){
+        int count=0;
+        for(Utilizador u: this.utilizadores){
+            if(u instanceof Dono){
+                count++;
+            }
+        }
+        return count;
+    }
     
     
     
