@@ -6,42 +6,21 @@
 package Interface_Grafica;
 
 import Exceptions.*;
-import java.awt.Color;
-import javax.swing.*;
-import MedHut.*;
-import Utilizadores.*;
-import java.util.*;
-
-
+import MedHut.Repositorio;
+import Utilizadores.Cliente;
 /**
  *
  * @author Pedro Silva
  */
-public class Ecra_Registar extends javax.swing.JPanel {
-    private Frame_Inicial frame;
+public class Ecra_Cliente_Dados extends javax.swing.JPanel {
+    private Frame_Inicial frame ;
+    private Cliente cliente = null, hold = null;
+    private int cc, nif, contacto ;
     /**
-     * Creates new form Ecra_Registar
+     * Creates new form Ecra_Cliente_Dados
      */
-    public Ecra_Registar(Frame_Inicial frame) {
+    public Ecra_Cliente_Dados() {
         initComponents();
-        this.frame = frame ;
-        this.jLabelCCRepetido.setVisible(false);
-        this.jLabelUserRepetido.setVisible(false);
-        this.jLabelNIFRepetido.setVisible(false);
-        this.jLabelContactoRepetido.setVisible(false);
-    }
-    
-    public static void main(String[] args) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new Ecra_Registar().setVisible(true);
-            }
-        });
-    }
-
-    private Ecra_Registar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -53,15 +32,10 @@ public class Ecra_Registar extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lbl_Registo = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        jLabelNIFRepetido = new javax.swing.JLabel();
+        jLabelUserRepetido = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        jLabelContactoRepetido = new javax.swing.JLabel();
         jTextFieldNome = new javax.swing.JTextField();
         jTextFieldCC = new javax.swing.JTextField();
         jTextFieldNif = new javax.swing.JTextField();
@@ -70,50 +44,34 @@ public class Ecra_Registar extends javax.swing.JPanel {
         jTextFieldLocalidade = new javax.swing.JTextField();
         jTextFieldUser = new javax.swing.JTextField();
         jTextFieldPasswd = new javax.swing.JTextField();
-        jLabel1 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jComboBoxTipoUtilizador = new javax.swing.JComboBox<>();
-        jButtonRegistar = new javax.swing.JButton();
+        jButtonEfetuarAlteraçoes = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        lbl_Registo = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jLabelCCRepetido = new javax.swing.JLabel();
-        jLabelNIFRepetido = new javax.swing.JLabel();
-        jLabelUserRepetido = new javax.swing.JLabel();
-        jLabelContactoRepetido = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 204, 102));
-        setName(""); // NOI18N
 
-        lbl_Registo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        lbl_Registo.setText("Registo");
+        jLabelNIFRepetido.setText("Repetido!");
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("Nome:");
-
-        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel3.setText("Numero CC:");
-
-        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel4.setText("NIF:");
-
-        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel5.setText("Contacto:");
-
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel6.setText("Morada:");
-
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel7.setText("Localidade:");
-
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel8.setText("Username:");
+        jLabelUserRepetido.setText("Repetido!");
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setText("Password:");
+
+        jLabelContactoRepetido.setText("Repetido!");
 
         jTextFieldNome.setToolTipText("Intruduza o nome");
         jTextFieldNome.setName(""); // NOI18N
@@ -136,23 +94,13 @@ public class Ecra_Registar extends javax.swing.JPanel {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel1.setText("Registar um novo:");
-
         jSeparator1.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
 
-        jComboBoxTipoUtilizador.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Cliente", "Dono" }));
-        jComboBoxTipoUtilizador.addActionListener(new java.awt.event.ActionListener() {
+        jButtonEfetuarAlteraçoes.setText("Efetuar Alterações");
+        jButtonEfetuarAlteraçoes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxTipoUtilizadorActionPerformed(evt);
-            }
-        });
-
-        jButtonRegistar.setText("Registar");
-        jButtonRegistar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonRegistarActionPerformed(evt);
+                jButtonEfetuarAlteraçoesActionPerformed(evt);
             }
         });
 
@@ -162,6 +110,9 @@ public class Ecra_Registar extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
+
+        lbl_Registo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lbl_Registo.setText("Alterar Dados Pessoais");
 
         jPanel1.setBackground(new java.awt.Color(255, 204, 153));
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
@@ -213,93 +164,102 @@ public class Ecra_Registar extends javax.swing.JPanel {
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel13)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(234, Short.MAX_VALUE))
         );
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel2.setText("Nome:");
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel3.setText("Numero CC:");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setText("NIF:");
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel5.setText("Contacto:");
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel6.setText("Morada:");
 
         jLabelCCRepetido.setText("Repetido!");
 
-        jLabelNIFRepetido.setText("Repetido!");
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel7.setText("Localidade:");
 
-        jLabelUserRepetido.setText("Repetido!");
-
-        jLabelContactoRepetido.setText("Repetido!");
+        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel8.setText("Username:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(408, 408, 408)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonRegistar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(114, 114, 114))
-            .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(148, 148, 148)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(147, 147, 147)
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jComboBoxTipoUtilizador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel2)
-                                    .addGap(53, 53, 53))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel3)
-                                    .addGap(18, 18, 18))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextFieldLocalidade)
-                                .addComponent(jTextFieldMorada)
-                                .addComponent(jTextFieldContacto)
-                                .addComponent(jTextFieldNif)
-                                .addComponent(jTextFieldCC)
-                                .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabelNIFRepetido)
-                                .addComponent(jLabelCCRepetido)
-                                .addComponent(jLabelContactoRepetido))
-                            .addGap(59, 59, 59)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(214, 214, 214)
-                        .addComponent(lbl_Registo))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(121, 121, 121)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel9))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldUser, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTextFieldPasswd, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabelUserRepetido)))
-                .addContainerGap(156, Short.MAX_VALUE))
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(103, 103, 103)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel2)
+                                            .addGap(53, 53, 53))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(jLabel3)
+                                            .addGap(18, 18, 18))
+                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(lbl_Registo)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(jTextFieldLocalidade)
+                                                .addComponent(jTextFieldMorada)
+                                                .addComponent(jTextFieldContacto)
+                                                .addComponent(jTextFieldNif)
+                                                .addComponent(jTextFieldCC)
+                                                .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addComponent(jLabelNIFRepetido)
+                                                .addComponent(jLabelCCRepetido)
+                                                .addComponent(jLabelContactoRepetido))))
+                                    .addGap(59, 59, 59)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(121, 121, 121)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jLabel8)
+                                            .addComponent(jLabel9))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jTextFieldUser, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jTextFieldPasswd, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabelUserRepetido))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(223, 223, 223)
+                                .addComponent(jButtonEfetuarAlteraçoes, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(160, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 186, Short.MAX_VALUE)
+                .addGap(135, 135, 135)
                 .addComponent(lbl_Registo)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jComboBoxTipoUtilizador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
+                .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
@@ -337,12 +297,11 @@ public class Ecra_Registar extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(jTextFieldPasswd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(53, 53, 53)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonRegistar, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(48, 48, 48))
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonEfetuarAlteraçoes, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(63, 63, 63))
         );
 
         jTextFieldNome.setUI(new HintTextFieldUI("Introduza o nome", true));
@@ -354,10 +313,6 @@ public class Ecra_Registar extends javax.swing.JPanel {
         jTextFieldUser.setUI(new HintTextFieldUI("Nome de Utilizador", true));
         jTextFieldPasswd.setUI(new HintTextFieldUI("Palavra-Passe", true));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jComboBoxTipoUtilizadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxTipoUtilizadorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxTipoUtilizadorActionPerformed
 
     private void jTextFieldNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldNomeActionPerformed
         // TODO add your handling code here:
@@ -371,60 +326,32 @@ public class Ecra_Registar extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldUserActionPerformed
 
-    private void jButtonRegistarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegistarActionPerformed
-        int cc, nif, contacto ;
-        cc = Integer.parseInt(this.jTextFieldCC.getText());
+    private void jButtonEfetuarAlteraçoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEfetuarAlteraçoesActionPerformed
+         cc = Integer.parseInt(this.jTextFieldCC.getText());
         nif = Integer.parseInt(this.jTextFieldNif.getText());
         contacto = Integer.parseInt(this.jTextFieldContacto.getText());
-        switch ((String) this.jComboBoxTipoUtilizador.getSelectedItem()) {
-            case "Cliente":
-                try {
-                    Repositorio.getInstance().RegistarConta(new Cliente(this.jTextFieldNome.getText(), cc, nif, contacto, this.jTextFieldMorada.getText(), this.jTextFieldLocalidade.getText(), this.jTextFieldUser.getText(), this.jTextFieldPasswd.getText()));
-                    OperacaoComSucesso Sucesso = new OperacaoComSucesso (this.frame, true) ;
-                    Sucesso.setEnabled(true);
-                    Sucesso.setVisible(true);
-                    Repositorio.serializar("Repositorio");
-                    this.frame.retroceder();
-                } 
-                catch (NumCCRepetidoException ex) {
-                    this.jLabelCCRepetido.setVisible(true);
-                }
-                catch (NIFRepetidoException ex) {
-                    this.jLabelNIFRepetido.setVisible(true);
-                }
-                catch (ContactoRepetidoException ex) {
-                    this.jLabelContactoRepetido.setVisible(true);
-                }
-                catch (UsernameRepetidoException ex) {
-                    this.jLabelUserRepetido.setVisible(true);
-                }
-                break;
-            case "Dono":
-                try {
-                    Repositorio.getInstance().RegistarConta(new Dono(this.jTextFieldNome.getText(), cc, nif, contacto, this.jTextFieldMorada.getText(), this.jTextFieldLocalidade.getText(), this.jTextFieldUser.getText(), this.jTextFieldPasswd.getText()));
-                    OperacaoComSucesso Sucesso2 = new OperacaoComSucesso (this.frame, true) ;
-                    Sucesso2.setEnabled(true);
-                    Sucesso2.setVisible(true);
-                    Repositorio.serializar("Repositorio");
-                    this.frame.retroceder();
-                }
-                catch (NumCCRepetidoException ex) {
-                    this.jLabelCCRepetido.setVisible(true);
-                }
-                catch (NIFRepetidoException ex) {
-                    this.jLabelNIFRepetido.setVisible(true);
-                }
-                catch (ContactoRepetidoException ex) {
-                    this.jLabelContactoRepetido.setVisible(true);
-                }
-                catch (UsernameRepetidoException ex) {
-                    this.jLabelUserRepetido.setVisible(true);
-                }
-                break;
-            default:
-                break;
-        }
-    }//GEN-LAST:event_jButtonRegistarActionPerformed
+        hold = cliente ;
+        hold.setUser(this.jTextFieldUser.getText());
+        hold.setNome(this.jTextFieldNome.getText());
+        hold.setNumcc(cc);
+        hold.setNif(nif);
+        hold.setContacto(contacto);
+        hold.setMorada(this.jTextFieldMorada.getText());
+        hold.setLocalidade(this.jTextFieldLocalidade.getText());
+        hold.setPasswd(this.jTextFieldPasswd.getText());
+        try {
+            Repositorio.getInstance().alterarInfoCliente(hold, cliente);
+            this.frame.retroceder();
+        } catch (UsernameRepetidoException ex) {
+            this.jLabelUserRepetido.setVisible(true);
+        }  catch (NumCCRepetidoException ex) {
+            this.jLabelCCRepetido.setVisible(true);
+        } catch (NIFRepetidoException ex) {
+            this.jLabelNIFRepetido.setVisible(true);
+        } catch (ContactoRepetidoException ex) {
+            this.jLabelContactoRepetido.setVisible(true);
+        } 
+    }//GEN-LAST:event_jButtonEfetuarAlteraçoesActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -434,9 +361,7 @@ public class Ecra_Registar extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButtonRegistar;
-    private javax.swing.JComboBox<String> jComboBoxTipoUtilizador;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jButtonEfetuarAlteraçoes;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -465,5 +390,4 @@ public class Ecra_Registar extends javax.swing.JPanel {
     private javax.swing.JTextField jTextFieldUser;
     private javax.swing.JLabel lbl_Registo;
     // End of variables declaration//GEN-END:variables
-
 }

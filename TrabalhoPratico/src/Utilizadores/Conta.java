@@ -5,11 +5,13 @@
  */
 package Utilizadores;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Pedro Silva e Diogo Correia
  */
-public abstract class Conta extends Utilizador implements Cloneable {
+public abstract class Conta extends Utilizador implements Serializable, Cloneable {
     
     //Variavéis de Instancia
     private String nome;

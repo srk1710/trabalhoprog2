@@ -19,7 +19,8 @@ public abstract class Utilizador implements Serializable{
     private int id=0;
     private String user;
     private String passwd;
- 
+    private boolean online = false ;
+    private boolean ativo = true ;
     
     public Utilizador(String user, String passwd){
         id = Utilizador.numUtilizador + 1;
@@ -60,5 +61,21 @@ public abstract class Utilizador implements Serializable{
     public String getPasswd() {
         return passwd;
     } 
+
+    public boolean isOnline() {
+        return online;
+    }
+
+    public void setOnline(boolean online) {
+        this.online = online;
+    }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
     
 }

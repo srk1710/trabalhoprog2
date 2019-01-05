@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package MedHut;
+import Exceptions.ContaNaoReconhecidaException;
 import Exceptions.ContactoRepetidoException;
 import Exceptions.NIFRepetidoException;
 import Exceptions.NumCCRepetidoException;
@@ -88,6 +89,18 @@ public class Repositorio implements Serializable{
           }
      }
      
+     public synchronized Utilizador logInUtil (String user, String passwd) throws ContaNaoReconhecidaException{
+        Utilizador utilizador = null ;
+        for (Utilizador util : this.utilizadores) {
+            if (util.getUser().equals(user) && util.getPasswd().equals(passwd) && util.isAtivo() && !util.isOnline()) {
+                util.setOnline(true);
+                utilizador = util ;
+                return utilizador ;
+            }
+        }
+        // a conta não foi reconhecida, lança a exception. utilizador = null
+        throw new ContaNaoReconhecidaException ("ERRO: a conta não foi reconhecida. Confirme se o user e a password que introduziu estão corretos.");
+    }
             // devolve o número de clientes
     public synchronized int getNumeroClientes(){
         int count=0;
@@ -121,6 +134,40 @@ public class Repositorio implements Serializable{
         return count;
     }
     
+            //Altera os Dados Pessoais do Cliente
+    public synchronized void alterarInfoCliente (Cliente novo, Cliente antigo) throws UsernameRepetidoException, NumCCRepetidoException, NIFRepetidoException, ContactoRepetidoException {
+        boolean existe = false ;
+        Utilizador hold = null;
+        for (Utilizador uti : this.utilizadores) {
+            if (uti instanceof Cliente) {
+                if (((Cliente)uti).getId() != novo.getId()) {
+                    if (((Cliente)uti).getUser().equals(novo.getUser())||((Cliente)uti).getId()==novo.getId()||((Cliente)uti).getNumcc()==novo.getNumcc()||((Cliente)uti).getNif()==novo.getNif()||((Cliente)uti).getContacto()==novo.getContacto()) {
+                        existe = true ;
+                        hold = uti ;
+                        break ;
+                    }
+                }
+            }
+        }
+        if (existe) {
+            if (((Cliente)hold).getUser().equals(novo.getUser())){
+                throw new UsernameRepetidoException ("ERRO: o User" + novo.getUser() + "ja existe!");
+            }
+            if (((Cliente)hold).getNumcc()==novo.getNumcc()) {
+                throw new NumCCRepetidoException ("ERRO: o CC" + novo.getNumcc() + "ja existe!");
+            }
+            if (((Cliente)hold).getNif()==novo.getNif()) {
+                throw new NIFRepetidoException ("ERRO: o Número Fiscal" + novo.getNif() + "ja existe!");
+            }
+            if (((Cliente)hold).getContacto()==novo.getContacto()) {
+                throw new ContactoRepetidoException ("ERRO: o Telefone" + novo.getContacto() + "ja existe!");
+            }
+        }
+        else{
+            antigo = novo ;
+        }
+    }
+    
     
     
        
@@ -148,6 +195,10 @@ public class Repositorio implements Serializable{
         } catch (ClassNotFoundException ex) {
             System.out.println("Cliente class not found. " + ex.getMessage());
         }
+    }
+    
+    public synchronized void atribuirNumeração () {
+        Utilizador.setNumUtilizador(Repositorio.getInstance().getNumeroUtilizadores());
     }
 
     
