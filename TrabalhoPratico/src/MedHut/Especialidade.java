@@ -10,11 +10,18 @@ package MedHut;
  * @author Pedro Silva e Diogo Correia
  */
 public enum Especialidade {
-    OFTALMOLOGIA,
-    CLINICA_GERAL,
-    OTORRINOLARINGOLOGIA,
-    ORTOPEDIA,
-    CARDIOLOGIA,
-    PSIQUIATRIA,
-    PNEUMOLOGIA
+    CLINICA_GERAL ("CLINICA GERAL)"),
+    OFTALMOLOGIA ("OFTALMOLOGIA"),
+    OTORRINOLARINGOLOGIA ("OTORRINOLARINGOLOGIA"),
+    ORTOPEDIA("ORTOPEDIA"),
+    CARDIOLOGIA("CARDIOLOGIA"),
+    PSIQUIATRIA("PSIQUIATRIA"),
+    PNEUMOLOGIA("PNEUMOLOGIA");
+    
+    private final String displayValue;
+
+  private Especialidade(String displayString){
+      this.displayValue = displayString;
+  }
+  
 }
