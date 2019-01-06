@@ -149,29 +149,29 @@ public class Repositorio implements Serializable{
             //Altera os Dados Pessoais do Cliente
     public synchronized void alterarInfoCliente (Cliente novo, Cliente antigo) throws UsernameRepetidoException, NumCCRepetidoException, NIFRepetidoException, ContactoRepetidoException {
         boolean existe = false ;
-        Utilizador hold = null;
+        Utilizador utilizador = null;
         for (Utilizador uti : this.utilizadores) {
             if (uti instanceof Cliente) {
                 if (((Cliente)uti).getId() != novo.getId()) {
                     if (((Cliente)uti).getUser().equals(novo.getUser())||((Cliente)uti).getId()==novo.getId()||((Cliente)uti).getNumcc()==novo.getNumcc()||((Cliente)uti).getNif()==novo.getNif()||((Cliente)uti).getContacto()==novo.getContacto()) {
                         existe = true ;
-                        hold = uti ;
+                        utilizador = uti ;
                         break ;
                     }
                 }
             }
         }
         if (existe) {
-            if (((Cliente)hold).getUser().equals(novo.getUser())){
+            if (((Cliente)utilizador).getUser().equals(novo.getUser())){
                 throw new UsernameRepetidoException ("ERRO: o User" + novo.getUser() + "ja existe!");
             }
-            if (((Cliente)hold).getNumcc()==novo.getNumcc()) {
+            if (((Cliente)utilizador).getNumcc()==novo.getNumcc()) {
                 throw new NumCCRepetidoException ("ERRO: o CC" + novo.getNumcc() + "ja existe!");
             }
-            if (((Cliente)hold).getNif()==novo.getNif()) {
+            if (((Cliente)utilizador).getNif()==novo.getNif()) {
                 throw new NIFRepetidoException ("ERRO: o Número Fiscal" + novo.getNif() + "ja existe!");
             }
-            if (((Cliente)hold).getContacto()==novo.getContacto()) {
+            if (((Cliente)utilizador).getContacto()==novo.getContacto()) {
                 throw new ContactoRepetidoException ("ERRO: o Telefone" + novo.getContacto() + "ja existe!");
             }
         }
@@ -182,29 +182,29 @@ public class Repositorio implements Serializable{
     
     public synchronized void alterarInfoDono (Dono novo, Dono antigo) throws UsernameRepetidoException, NumCCRepetidoException, NIFRepetidoException, ContactoRepetidoException {
         boolean existe = false ;
-        Utilizador hold = null;
+        Utilizador utilizador = null;
         for (Utilizador uti : this.utilizadores) {
             if (uti instanceof Dono) {
                 if (((Dono)uti).getId() != novo.getId()) {
                     if (((Dono)uti).getUser().equals(novo.getUser())||((Dono)uti).getId()==novo.getId()||((Dono)uti).getNumcc()==novo.getNumcc()||((Dono)uti).getNif()==novo.getNif()||((Dono)uti).getContacto()==novo.getContacto()) {
                         existe = true ;
-                        hold = uti ;
+                        utilizador = uti ;
                         break ;
                     }
                 }
             }
         }
         if (existe) {
-            if (((Dono)hold).getUser().equals(novo.getUser())){
+            if (((Dono)utilizador).getUser().equals(novo.getUser())){
                 throw new UsernameRepetidoException ("ERRO: o User" + novo.getUser() + "ja existe!");
             }
-            if (((Dono)hold).getNumcc()==novo.getNumcc()) {
+            if (((Dono)utilizador).getNumcc()==novo.getNumcc()) {
                 throw new NumCCRepetidoException ("ERRO: o CC" + novo.getNumcc() + "ja existe!");
             }
-            if (((Dono)hold).getNif()==novo.getNif()) {
+            if (((Dono)utilizador).getNif()==novo.getNif()) {
                 throw new NIFRepetidoException ("ERRO: o Número Fiscal" + novo.getNif() + "ja existe!");
             }
-            if (((Dono)hold).getContacto()==novo.getContacto()) {
+            if (((Dono)utilizador).getContacto()==novo.getContacto()) {
                 throw new ContactoRepetidoException ("ERRO: o Telefone" + novo.getContacto() + "ja existe!");
             }
         }
@@ -214,7 +214,7 @@ public class Repositorio implements Serializable{
     }
     
     public synchronized void adicionaConsultorioLocalidade (String localidade, Consultorio consul) throws ConsultorioRepetidoException, NomeRepetidoException{
-        List <Consultorio> hold = new ArrayList <> () ;
+        List <Consultorio> consultorios = new ArrayList <> () ;
         for (Map.Entry<String, List <Consultorio>> par : this.ConsultorioLocalidade.entrySet()) {         // para cada entrada do mapa (chave->valor)
             for (Consultorio c : par.getValue()) {                                       // pecorrer os alojamento da entrada, isto é, os valores de uma chave
                 if (c.getIdConsultorio() == consul.getIdConsultorio()) {
@@ -226,8 +226,8 @@ public class Repositorio implements Serializable{
             }
         }
         if (! this.ConsultorioLocalidade.containsKey(localidade)) {        // se o mapa não contém a chave
-            hold.add(consul) ;                       // adiciona o alojamento à lista de alojamentos temporária
-            this.ConsultorioLocalidade.put(localidade, hold) ;             // cria a entrada no mapa loca(String)->hold(lista de alojamentos)
+            consultorios.add(consul) ;                       // adiciona o alojamento à lista de alojamentos temporária
+            this.ConsultorioLocalidade.put(localidade, consultorios) ;             // cria a entrada no mapa loca(String)->utilizador(lista de alojamentos)
         }
         else{                                       // o mapa já contém a chave
             this.ConsultorioLocalidade.get(localidade).add(consul) ;        // adiciona o alojamento à lista de alojamentos (esta lista é o valor, key->value)
@@ -235,7 +235,7 @@ public class Repositorio implements Serializable{
     }
     
     public synchronized void adicionaConsultorioEspecialidade (Especialidade especialidade, Consultorio consul) throws ConsultorioRepetidoException, NomeRepetidoException{
-        List <Consultorio> hold2 = new ArrayList <> () ;
+        List <Consultorio> consultorios = new ArrayList <> () ;
         for (Map.Entry<Especialidade, List <Consultorio>> par : this.ConsultorioEspecialidade.entrySet()) {         // para cada entrada do mapa (chave->valor)
             for (Consultorio c : par.getValue()) {                                       // pecorrer os alojamento da entrada, isto é, os valores de uma chave
                 if (c.getIdConsultorio() == consul.getIdConsultorio()) {
@@ -247,8 +247,8 @@ public class Repositorio implements Serializable{
             }
         }
         if (! this.ConsultorioEspecialidade.containsKey(especialidade)) {        // se o mapa não contém a chave
-            hold2.add(consul) ;                       // adiciona o alojamento à lista de alojamentos temporária
-            this.ConsultorioEspecialidade.put(especialidade, hold2) ;             // cria a entrada no mapa loca(String)->hold(lista de alojamentos)
+            consultorios.add(consul) ;                       // adiciona o alojamento à lista de alojamentos temporária
+            this.ConsultorioEspecialidade.put(especialidade, consultorios) ;             // cria a entrada no mapa loca(String)->utilizador(lista de alojamentos)
         }
         else{                                       // o mapa já contém a chave
             this.ConsultorioEspecialidade.get(especialidade).add(consul) ;        // adiciona o alojamento à lista de alojamentos (esta lista é o valor, key->value)
