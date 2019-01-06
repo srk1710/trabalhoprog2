@@ -242,13 +242,7 @@ public class Ecra_Cliente_MarcarConsulta extends javax.swing.JPanel {
     }//GEN-LAST:event_jComboBoxEspecialidadeActionPerformed
 
     private void jbtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPesquisarActionPerformed
-         DefaultTableModel table = (DefaultTableModel)this.jTable1.getModel();
-        for (i = 0 ; i < table.getRowCount() ; i ++) {
-            table.removeRow(i);     //limpa tabela
-        }
-        for(Consultorio consul : Repositorio.getInstance().getConsultorios(((String)this.jComboBoxLocalidades.getSelectedItem()), ((Date)this.jSpinnerDataInicio.getValue()), ((Date)this.jSpinnerDataFim.getValue()), ((int)this.jSpinnerNumPessoas.getValue()))){
-            table.addRow(new Object[]{aloja.getId(), aloja.getNome(), aloja.getTipo(), aloja.getValorNoite(), aloja.getInteresses().size()});
-        }
+        
     }//GEN-LAST:event_jbtnPesquisarActionPerformed
 
 
