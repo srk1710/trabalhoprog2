@@ -5,9 +5,11 @@
  */
 package Interface_Grafica;
 
+import MedHut.Especialidade;
 import MedHut.Repositorio;
 import Utilizadores.Cliente;
 import java.util.Date;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -28,7 +30,10 @@ public class Ecra_Cliente_MarcarConsulta extends javax.swing.JPanel {
         this.cliente = cliente;
         this.jbtnAvançar.setVisible(false) ;
         for (String loc : Repositorio.getInstance().getLocalidades()) {
-            this.jComboBoxLocalidade.addItem(loc);       // preencher combobox com localidades que já possuem alojamentos inscritos na aplicação
+            this.jComboBoxLocalidade.addItem(loc);      
+        }
+        for (Especialidade esp : Repositorio.getInstance().getEspecialidades()){
+            this.jComboBoxEspecialidade.addItem(esp.name());
         }
     }
 
@@ -49,9 +54,10 @@ public class Ecra_Cliente_MarcarConsulta extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jTextFieldNomeConsultorio = new javax.swing.JTextField();
         jComboBoxLocalidade = new javax.swing.JComboBox<>();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBoxEspecialidade = new javax.swing.JComboBox<>();
         jbtnPesquisar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         jbtnRetroceder = new javax.swing.JButton();
         jbtnAvançar = new javax.swing.JButton();
 
@@ -112,13 +118,20 @@ public class Ecra_Cliente_MarcarConsulta extends javax.swing.JPanel {
 
         jPanel2.setBackground(new java.awt.Color(255, 204, 51));
 
-        jTextFieldNomeConsultorio.setText("jTextField1");
+        jTextFieldNomeConsultorio.setToolTipText("Nome Consultorio");
 
-        jComboBoxLocalidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxEspecialidade.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxEspecialidadeActionPerformed(evt);
+            }
+        });
 
         jbtnPesquisar.setText("Pesquisar");
+        jbtnPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnPesquisarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -126,7 +139,7 @@ public class Ecra_Cliente_MarcarConsulta extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jComboBoxEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(38, 38, 38))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
@@ -147,11 +160,24 @@ public class Ecra_Cliente_MarcarConsulta extends javax.swing.JPanel {
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jTextFieldNomeConsultorio, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jComboBoxLocalidade, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jbtnPesquisar)
                 .addContainerGap(17, Short.MAX_VALUE))
         );
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
         jbtnRetroceder.setText("Retroceder");
         jbtnRetroceder.addActionListener(new java.awt.event.ActionListener() {
@@ -211,9 +237,23 @@ public class Ecra_Cliente_MarcarConsulta extends javax.swing.JPanel {
         this.frame.retroceder();
     }//GEN-LAST:event_jbtnRetrocederActionPerformed
 
+    private void jComboBoxEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxEspecialidadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxEspecialidadeActionPerformed
+
+    private void jbtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPesquisarActionPerformed
+         DefaultTableModel table = (DefaultTableModel)this.jTable1.getModel();
+        for (i = 0 ; i < table.getRowCount() ; i ++) {
+            table.removeRow(i);     //limpa tabela
+        }
+        for(Consultorio consul : Repositorio.getInstance().getConsultorios(((String)this.jComboBoxLocalidades.getSelectedItem()), ((Date)this.jSpinnerDataInicio.getValue()), ((Date)this.jSpinnerDataFim.getValue()), ((int)this.jSpinnerNumPessoas.getValue()))){
+            table.addRow(new Object[]{aloja.getId(), aloja.getNome(), aloja.getTipo(), aloja.getValorNoite(), aloja.getInteresses().size()});
+        }
+    }//GEN-LAST:event_jbtnPesquisarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBoxEspecialidade;
     private javax.swing.JComboBox<String> jComboBoxLocalidade;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -222,6 +262,7 @@ public class Ecra_Cliente_MarcarConsulta extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextFieldNomeConsultorio;
     private javax.swing.JButton jbtnAvançar;
     private javax.swing.JButton jbtnPesquisar;

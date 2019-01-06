@@ -4,9 +4,12 @@
  * and open the template in the editor.
  */
 package MedHut;
+import Exceptions.ConsultorioRepetidoException;
 import Exceptions.ContaNaoReconhecidaException;
 import Exceptions.ContactoRepetidoException;
+import Exceptions.ErroCrucialException;
 import Exceptions.NIFRepetidoException;
+import Exceptions.NomeRepetidoException;
 import Exceptions.NumCCRepetidoException;
 import Exceptions.UsernameRepetidoException;
 import java.io.*;
@@ -99,6 +102,17 @@ public class Repositorio implements Serializable{
         // a conta não foi reconhecida, lança a exception. utilizador = null
         throw new ContaNaoReconhecidaException ("ERRO: a conta não foi reconhecida. Confirme se o user e a password que introduziu estão corretos.");
     }
+     
+     public synchronized void logOutUtil(Utilizador utilizador) throws ErroCrucialException{
+        for (Utilizador util : this.utilizadores) {
+            if (util.equals(utilizador)) {
+                util.setOnline(false) ;
+                return ;
+            }
+        }
+        //algo se passou
+        throw new ErroCrucialException ("Erro crucial na aplicação. Dados não guardados.") ;
+    }
             // devolve o número de clientes
     public synchronized int getNumeroClientes(){
         int count=0;
@@ -166,8 +180,61 @@ public class Repositorio implements Serializable{
         }
     }
     
+    public synchronized void adicionaConsultorioLocalidade (String localidade, Consultorio consul) throws ConsultorioRepetidoException, NomeRepetidoException{
+        List <Consultorio> hold = new ArrayList <> () ;
+        for (Map.Entry<String, List <Consultorio>> par : this.ConsultorioLocalidade.entrySet()) {         // para cada entrada do mapa (chave->valor)
+            for (Consultorio c : par.getValue()) {                                       // pecorrer os alojamento da entrada, isto é, os valores de uma chave
+                if (c.getIdConsultorio() == consul.getIdConsultorio()) {
+                    throw new ConsultorioRepetidoException ("ERRO: o Alojamento, com identificador:" + consul.getIdConsultorio() + ", ja existe!");
+                }
+                if (c.getNome().equals(consul.getNome())) {
+                    throw new NomeRepetidoException ("ERRO: este nome ja existe !") ;
+                }
+            }
+        }
+        if (! this.ConsultorioLocalidade.containsKey(localidade)) {        // se o mapa não contém a chave
+            hold.add(consul) ;                       // adiciona o alojamento à lista de alojamentos temporária
+            this.ConsultorioLocalidade.put(localidade, hold) ;             // cria a entrada no mapa loca(String)->hold(lista de alojamentos)
+        }
+        else{                                       // o mapa já contém a chave
+            this.ConsultorioLocalidade.get(localidade).add(consul) ;        // adiciona o alojamento à lista de alojamentos (esta lista é o valor, key->value)
+        }
+    }
+    
+    public synchronized void adicionaConsultorioEspecialidade (Especialidade especialidade, Consultorio consul) throws ConsultorioRepetidoException, NomeRepetidoException{
+        List <Consultorio> hold2 = new ArrayList <> () ;
+        for (Map.Entry<Especialidade, List <Consultorio>> par : this.ConsultorioEspecialidade.entrySet()) {         // para cada entrada do mapa (chave->valor)
+            for (Consultorio c : par.getValue()) {                                       // pecorrer os alojamento da entrada, isto é, os valores de uma chave
+                if (c.getIdConsultorio() == consul.getIdConsultorio()) {
+                    throw new ConsultorioRepetidoException ("ERRO: o Alojamento, com identificador:" + consul.getIdConsultorio() + ", ja existe!");
+                }
+                if (c.getNome().equals(consul.getNome())) {
+                    throw new NomeRepetidoException ("ERRO: este nome ja existe !") ;
+                }
+            }
+        }
+        if (! this.ConsultorioEspecialidade.containsKey(especialidade)) {        // se o mapa não contém a chave
+            hold2.add(consul) ;                       // adiciona o alojamento à lista de alojamentos temporária
+            this.ConsultorioEspecialidade.put(especialidade, hold2) ;             // cria a entrada no mapa loca(String)->hold(lista de alojamentos)
+        }
+        else{                                       // o mapa já contém a chave
+            this.ConsultorioEspecialidade.get(especialidade).add(consul) ;        // adiciona o alojamento à lista de alojamentos (esta lista é o valor, key->value)
+        }
+    }
+    
     public synchronized Set<String> getLocalidades () {
         return this.ConsultorioLocalidade.keySet() ;
+    }
+    
+    public synchronized Set<Especialidade> getEspecialidades(){
+        return this.ConsultorioEspecialidade.keySet();
+    }
+    
+    public synchronized List <Consultorio> getConsultoriosDisponiveis (String nome, String loc, Especialidade esp) {
+        List <Consultorio> listloc = this.ConsultorioLocalidade.get(loc) ;
+        List <Consultorio> listesp = this.ConsultorioEspecialidade.get(esp);
+        
+        return listloc, listesp;
     }
     
     

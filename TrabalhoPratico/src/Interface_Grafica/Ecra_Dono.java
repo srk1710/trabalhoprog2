@@ -5,6 +5,8 @@
  */
 package Interface_Grafica;
 
+import Exceptions.ErroCrucialException;
+import MedHut.Repositorio;
 import Utilizadores.Dono;
 
 /**
@@ -36,7 +38,7 @@ public class Ecra_Dono extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        jbtnSair = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
@@ -69,7 +71,12 @@ public class Ecra_Dono extends javax.swing.JPanel {
 
         jButton4.setText("Alterar Dados Pessoais");
 
-        jButton5.setText("Sair");
+        jbtnSair.setText("Sair");
+        jbtnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnSairActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/logo_dono.png"))); // NOI18N
@@ -147,7 +154,7 @@ public class Ecra_Dono extends javax.swing.JPanel {
                                     .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(305, 305, 305))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jbtnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(55, 55, 55))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(286, 286, 286)
@@ -169,7 +176,7 @@ public class Ecra_Dono extends javax.swing.JPanel {
                 .addGap(30, 30, 30)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jbtnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(70, 70, 70))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -187,18 +194,29 @@ public class Ecra_Dono extends javax.swing.JPanel {
         this.frame.AvançarParaPainel(pRegistarConsultorio,this);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jbtnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSairActionPerformed
+        try {
+            Repositorio.getInstance().logOutUtil(dono);
+            Repositorio.serializar("Repositorio");
+            this.frame.retroceder() ;
+            this.frame.retroceder() ;
+        } catch (ErroCrucialException ex) {
+
+        }
+    }//GEN-LAST:event_jbtnSairActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton jbtnSair;
     // End of variables declaration//GEN-END:variables
 }

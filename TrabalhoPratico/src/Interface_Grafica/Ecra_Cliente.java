@@ -5,6 +5,8 @@
  */
 package Interface_Grafica;
 
+import Exceptions.ErroCrucialException;
+import MedHut.Repositorio;
 import Utilizadores.Cliente;
 
 /**
@@ -198,7 +200,14 @@ public class Ecra_Cliente extends javax.swing.JPanel {
     }//GEN-LAST:event_jbtnAlterarDadosActionPerformed
 
     private void jbtnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSairActionPerformed
-        this.frame.retroceder();
+        try {
+            Repositorio.getInstance().logOutUtil(cliente);
+            Repositorio.serializar("Repositorio");
+            this.frame.retroceder() ;
+            this.frame.retroceder() ;
+        } catch (ErroCrucialException ex) {
+
+        }
     }//GEN-LAST:event_jbtnSairActionPerformed
 
     private void jbtnMarcarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnMarcarConsultaActionPerformed

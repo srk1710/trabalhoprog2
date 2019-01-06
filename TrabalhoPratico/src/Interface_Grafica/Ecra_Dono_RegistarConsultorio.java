@@ -5,7 +5,11 @@
  */
 package Interface_Grafica;
 
+import Exceptions.ConsultorioRepetidoException;
+import Exceptions.NomeRepetidoException;
+import MedHut.Consultorio;
 import MedHut.Especialidade;
+import MedHut.Repositorio;
 import Utilizadores.Dono;
 import javax.swing.DefaultComboBoxModel;
 
@@ -49,6 +53,8 @@ public class Ecra_Dono_RegistarConsultorio extends javax.swing.JPanel {
         jComboBoxEspecialidade = new javax.swing.JComboBox<>();
         btnRetroceder = new javax.swing.JButton();
         jbtnRegConsultorio = new javax.swing.JButton();
+        jlblMorada = new javax.swing.JLabel();
+        jTextFieldMorada = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 204, 102));
 
@@ -140,6 +146,14 @@ public class Ecra_Dono_RegistarConsultorio extends javax.swing.JPanel {
         });
 
         jbtnRegConsultorio.setText("Registar Consultório");
+        jbtnRegConsultorio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnRegConsultorioActionPerformed(evt);
+            }
+        });
+
+        jlblMorada.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlblMorada.setText("Morada");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -149,39 +163,41 @@ public class Ecra_Dono_RegistarConsultorio extends javax.swing.JPanel {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldLocalidade, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(435, 435, 435)
-                                    .addComponent(jlblNome))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(333, 333, 333)
-                                    .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(435, 435, 435)
+                                .addComponent(jlblNome))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(333, 333, 333)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextFieldMorada, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldLocalidade, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(63, 63, 63)
+                        .addComponent(btnRetroceder, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jbtnRegConsultorio)
+                        .addGap(65, 65, 65))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(270, 270, 270)
                                 .addComponent(jLabel1))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(415, 415, 415)
-                                .addComponent(jlblLocalidade))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(402, 402, 402)
+                                .addGap(403, 403, 403)
                                 .addComponent(jlblEspecialidade))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(377, 377, 377)
-                                .addComponent(jComboBoxEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(315, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
-                        .addComponent(btnRetroceder, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jbtnRegConsultorio)
-                        .addGap(65, 65, 65))))
+                                .addGap(375, 375, 375)
+                                .addComponent(jComboBoxEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(427, 427, 427)
+                                .addComponent(jlblMorada))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(416, 416, 416)
+                                .addComponent(jlblLocalidade)))
+                        .addContainerGap(315, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,14 +210,18 @@ public class Ecra_Dono_RegistarConsultorio extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jlblLocalidade)
+                .addComponent(jlblMorada)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldMorada, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jlblLocalidade)
+                .addGap(5, 5, 5)
                 .addComponent(jTextFieldLocalidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(3, 3, 3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jlblEspecialidade)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBoxEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(126, 126, 126)
+                .addGap(78, 78, 78)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRetroceder, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbtnRegConsultorio, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -220,6 +240,21 @@ public class Ecra_Dono_RegistarConsultorio extends javax.swing.JPanel {
     private void jComboBoxEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxEspecialidadeActionPerformed
         
     }//GEN-LAST:event_jComboBoxEspecialidadeActionPerformed
+
+    private void jbtnRegConsultorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnRegConsultorioActionPerformed
+    try {  
+        Consultorio consul = new Consultorio(this.jTextFieldNome.getText(),this.jTextFieldMorada.getText(), this.jTextFieldLocalidade.getText(), (Especialidade)jComboBoxEspecialidade.getSelectedItem(), dono);
+        Repositorio.getInstance().adicionaConsultorioLocalidade(this.jTextFieldLocalidade.getText(), consul);
+        Repositorio.getInstance().adicionaConsultorioEspecialidade((Especialidade)jComboBoxEspecialidade.getSelectedItem(), consul);
+        dono.addConsultorio(consul);
+        OperacaoComSucesso Sucesso = new OperacaoComSucesso (this.frame, true) ;
+        Sucesso.setEnabled(true);
+        Sucesso.setVisible(true);
+        Repositorio.serializar("Repositorio");
+        this.frame.retroceder();
+    } catch (ConsultorioRepetidoException | NomeRepetidoException x) {}
+    
+    }//GEN-LAST:event_jbtnRegConsultorioActionPerformed
     
     
 
@@ -233,10 +268,12 @@ public class Ecra_Dono_RegistarConsultorio extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextFieldLocalidade;
+    private javax.swing.JTextField jTextFieldMorada;
     private javax.swing.JTextField jTextFieldNome;
     private javax.swing.JButton jbtnRegConsultorio;
     private javax.swing.JLabel jlblEspecialidade;
     private javax.swing.JLabel jlblLocalidade;
+    private javax.swing.JLabel jlblMorada;
     private javax.swing.JLabel jlblNome;
     // End of variables declaration//GEN-END:variables
 }
