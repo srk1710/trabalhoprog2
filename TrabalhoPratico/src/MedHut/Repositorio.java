@@ -19,10 +19,8 @@ import Interface_Grafica.*;
  * @author srk
  */
 public class Repositorio implements Serializable{
-    
-    
-    private Map<Consultorio,Especialidade> ConsultorioEspecialidade;
-    private Map<Consultorio, String> ConsultorioLocalidade;
+    private Map<Especialidade,List<Consultorio>> ConsultorioEspecialidade;
+    private Map<String, List<Consultorio>> ConsultorioLocalidade;
     private List<Utilizador> utilizadores;
     
     
@@ -166,6 +164,10 @@ public class Repositorio implements Serializable{
         else{
             antigo = novo ;
         }
+    }
+    
+    public synchronized Set<String> getLocalidades () {
+        return this.ConsultorioLocalidade.keySet() ;
     }
     
     

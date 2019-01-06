@@ -19,8 +19,30 @@ public class Ecra_Cliente_Dados extends javax.swing.JPanel {
     /**
      * Creates new form Ecra_Cliente_Dados
      */
-    public Ecra_Cliente_Dados() {
+    public Ecra_Cliente_Dados(Frame_Inicial frame, Cliente cliente) {
         initComponents();
+        this.frame = frame ;
+        this.cliente = cliente ;
+        this.jTextFieldUser.setText(null);
+        this.jTextFieldPasswd.setText(null);
+        this.jTextFieldNome.setText(null);
+        this.jTextFieldCC.setText(null);
+        this.jTextFieldNif.setText(null);
+        this.jTextFieldContacto.setText(null);
+        this.jTextFieldLocalidade.setText(null);
+        this.jTextFieldMorada.setText(null);
+        this.jLabelCCRepetido.setVisible(false);
+        this.jLabelNIFRepetido.setVisible(false);
+        this.jLabelUserRepetido.setVisible(false);
+        this.jLabelContactoRepetido.setVisible(false); 
+        this.jTextFieldUser.setText(cliente.getUser());
+        this.jTextFieldPasswd.setText(cliente.getPasswd());
+        this.jTextFieldNome.setText(cliente.getNome());
+        this.jTextFieldCC.setText(String.valueOf(cliente.getNumcc()));
+        this.jTextFieldNif.setText(String.valueOf(cliente.getNif()));
+        this.jTextFieldContacto.setText(String.valueOf(cliente.getContacto()));
+        this.jTextFieldLocalidade.setText(cliente.getLocalidade());
+        this.jTextFieldMorada.setText(cliente.getMorada());
     }
 
     /**
@@ -351,6 +373,9 @@ public class Ecra_Cliente_Dados extends javax.swing.JPanel {
         } catch (ContactoRepetidoException ex) {
             this.jLabelContactoRepetido.setVisible(true);
         } 
+        OperacaoComSucesso Sucesso = new OperacaoComSucesso (this.frame, true) ;
+        Sucesso.setEnabled(true);
+        Sucesso.setVisible(true);
     }//GEN-LAST:event_jButtonEfetuarAlteraçoesActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

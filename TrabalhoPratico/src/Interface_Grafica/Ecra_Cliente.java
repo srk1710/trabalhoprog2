@@ -32,21 +32,26 @@ public class Ecra_Cliente extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton5 = new javax.swing.JButton();
+        jbtnSair = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jbtnMarcarConsulta = new javax.swing.JButton();
+        jbtnMarcacoes = new javax.swing.JButton();
+        jbtnPontos = new javax.swing.JButton();
+        jbtnAlterarDados = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 204, 102));
 
-        jButton5.setText("Sair");
+        jbtnSair.setText("Sair");
+        jbtnSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnSairActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/logo_cliente.png"))); // NOI18N
@@ -106,23 +111,33 @@ public class Ecra_Cliente extends javax.swing.JPanel {
                 .addContainerGap(234, Short.MAX_VALUE))
         );
 
-        jButton1.setText("Marcar Consulta");
-
-        jButton2.setText("Consultar Marcações");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        jbtnMarcarConsulta.setText("Marcar Consulta");
+        jbtnMarcarConsulta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                jbtnMarcarConsultaActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Consultar Pontos");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        jbtnMarcacoes.setText("Consultar Marcações");
+        jbtnMarcacoes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                jbtnMarcacoesActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Alterar Dados Pessoais");
+        jbtnPontos.setText("Consultar Pontos");
+        jbtnPontos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnPontosActionPerformed(evt);
+            }
+        });
+
+        jbtnAlterarDados.setText("Alterar Dados Pessoais");
+        jbtnAlterarDados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnAlterarDadosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -136,13 +151,13 @@ public class Ecra_Cliente extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jbtnMarcarConsulta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jbtnMarcacoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jbtnPontos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jbtnAlterarDados, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(305, 305, 305))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jbtnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(55, 55, 55))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(286, 286, 286)
@@ -156,39 +171,53 @@ public class Ecra_Cliente extends javax.swing.JPanel {
                 .addGap(23, 23, 23)
                 .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jbtnMarcarConsulta, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jbtnMarcacoes, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jbtnPontos, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jbtnAlterarDados, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
-                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jbtnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(70, 70, 70))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void jbtnMarcacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnMarcacoesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jbtnMarcacoesActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void jbtnPontosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPontosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_jbtnPontosActionPerformed
+
+    private void jbtnAlterarDadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAlterarDadosActionPerformed
+        Ecra_Cliente_Dados pAlterarDados = new Ecra_Cliente_Dados (this.frame, cliente) ;
+        this.frame.AvançarParaPainel(pAlterarDados, this);
+    }//GEN-LAST:event_jbtnAlterarDadosActionPerformed
+
+    private void jbtnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnSairActionPerformed
+        this.frame.retroceder();
+    }//GEN-LAST:event_jbtnSairActionPerformed
+
+    private void jbtnMarcarConsultaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnMarcarConsultaActionPerformed
+        Ecra_Cliente_MarcarConsulta pMarcarConsulta = new Ecra_Cliente_MarcarConsulta(this.frame, cliente);
+        this.frame.AvançarParaPainel(pMarcarConsulta,this);
+    }//GEN-LAST:event_jbtnMarcarConsultaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton jbtnAlterarDados;
+    private javax.swing.JButton jbtnMarcacoes;
+    private javax.swing.JButton jbtnMarcarConsulta;
+    private javax.swing.JButton jbtnPontos;
+    private javax.swing.JButton jbtnSair;
     // End of variables declaration//GEN-END:variables
 }
