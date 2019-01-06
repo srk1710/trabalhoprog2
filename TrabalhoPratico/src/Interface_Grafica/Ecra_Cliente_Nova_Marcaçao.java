@@ -7,36 +7,36 @@ package Interface_Grafica;
 
 import MedHut.Consultorio;
 import MedHut.Especialidade;
+import MedHut.Marcacao;
 import MedHut.Repositorio;
 import Utilizadores.Cliente;
+import java.util.Calendar;
 import java.util.Date;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerDateModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Pedro Silva
  */
-public class Ecra_Cliente_MarcarConsulta extends javax.swing.JPanel {
+public class Ecra_Cliente_Nova_Marcaçao extends javax.swing.JPanel {
     private Frame_Inicial frame ;
     private final Cliente cliente ;
     private int i=0, id_consultorio = 0;
-    private Consultorio selected;
+    private Consultorio consul;
     /**
      * Creates new form Ecra_Cliente_MarcarConsulta
      */
-    public Ecra_Cliente_MarcarConsulta(Frame_Inicial frame, Cliente cliente) {
+    public Ecra_Cliente_Nova_Marcaçao(Frame_Inicial frame, Cliente cliente, Consultorio consul) {
         initComponents();
         this.frame = frame;
         this.cliente = cliente;
-        this.jbtnAvançar.setVisible(false) ;
-        this.jComboBoxLocalidade.addItem("");
-        this.jComboBoxEspecialidade.addItem("");
-        for (String loc : Repositorio.getInstance().getLocalidades()) {
-            this.jComboBoxLocalidade.addItem(loc);      
-        }
-        for (Especialidade esp : Repositorio.getInstance().getEspecialidades()){
-            this.jComboBoxEspecialidade.addItem(esp.name());
-        }
+        this.consul = consul;
+        
+      
+        
+
     }
 
     /**
@@ -54,14 +54,18 @@ public class Ecra_Cliente_MarcarConsulta extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jTextFieldNomeConsultorio = new javax.swing.JTextField();
-        jComboBoxLocalidade = new javax.swing.JComboBox<>();
-        jComboBoxEspecialidade = new javax.swing.JComboBox<>();
-        jbtnPesquisar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTablePesquisa = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
         jbtnRetroceder = new javax.swing.JButton();
         jbtnAvançar = new javax.swing.JButton();
+        jlblData = new javax.swing.JLabel();
+        jlblHoraInicio = new javax.swing.JLabel();
+        Date date = new Date();
+        SpinnerDateModel sm = new SpinnerDateModel(date, null, null, Calendar.MINUTE);
+        jSpinnerHoraInicio = new javax.swing.JSpinner(sm);
+        jSpinnerData = new javax.swing.JSpinner();
+        jLabel1 = new javax.swing.JLabel();
+        SpinnerDateModel sm1 = new SpinnerDateModel(date, null, null, Calendar.MINUTE);
+        jSpinnerHoraFim = new javax.swing.JSpinner(sm1);
 
         setBackground(new java.awt.Color(255, 204, 102));
 
@@ -115,73 +119,34 @@ public class Ecra_Cliente_MarcarConsulta extends javax.swing.JPanel {
                 .addComponent(jLabel12)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel13)
-                .addContainerGap(267, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(255, 204, 51));
 
-        jTextFieldNomeConsultorio.setToolTipText("Nome Consultorio");
-
-        jComboBoxEspecialidade.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxEspecialidadeActionPerformed(evt);
-            }
-        });
-
-        jbtnPesquisar.setText("Pesquisar");
-        jbtnPesquisar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbtnPesquisarActionPerformed(evt);
-            }
-        });
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/icon_addMarcaçao.png"))); // NOI18N
+        jLabel2.setText("Nova Marcação");
+        jLabel2.setVerticalAlignment(javax.swing.SwingConstants.BOTTOM);
+        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jLabel2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jComboBoxEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTextFieldNomeConsultorio, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(115, 115, 115)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(jbtnPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jComboBoxLocalidade, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(328, Short.MAX_VALUE))
+                .addGap(299, 299, 299)
+                .addComponent(jLabel2)
+                .addContainerGap(308, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextFieldNomeConsultorio, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBoxLocalidade, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jComboBoxEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jbtnPesquisar)
-                .addContainerGap(17, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(32, 32, 32))
         );
-
-        jTablePesquisa.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Id", "Nome do Consultorio", "Localidade", "Especialidade"
-            }
-        ));
-        jTablePesquisa.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTablePesquisaMouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(jTablePesquisa);
 
         jbtnRetroceder.setText("Retroceder");
         jbtnRetroceder.addActionListener(new java.awt.event.ActionListener() {
@@ -190,12 +155,32 @@ public class Ecra_Cliente_MarcarConsulta extends javax.swing.JPanel {
             }
         });
 
-        jbtnAvançar.setText("Avançar");
+        jbtnAvançar.setText("Efetuar Marcação");
         jbtnAvançar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnAvançarActionPerformed(evt);
             }
         });
+
+        jlblData.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlblData.setText("Data");
+
+        jlblHoraInicio.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlblHoraInicio.setText("Hora de Inicio");
+
+        JSpinner.DateEditor de = new JSpinner.DateEditor(jSpinnerHoraInicio, "HH:mm");
+        jSpinnerHoraInicio.setEditor(de);
+        jSpinnerHoraInicio.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+
+        jSpinnerData.setModel(new javax.swing.SpinnerDateModel(new java.util.Date(), null, null, java.util.Calendar.DAY_OF_WEEK_IN_MONTH));
+        JSpinner.DateEditor d = new JSpinner.DateEditor(jSpinnerData, "dd-MMM-yyyy");
+        jSpinnerData.setEditor(d);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setText("Hora de Fim");
+
+        JSpinner.DateEditor de2 = new JSpinner.DateEditor(jSpinnerHoraFim, "HH:mm");
+        jSpinnerHoraFim.setEditor(de2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -206,17 +191,36 @@ public class Ecra_Cliente_MarcarConsulta extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane1)
-                                .addContainerGap())))
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
+                        .addGap(69, 69, 69)
                         .addComponent(jbtnRetroceder, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jbtnAvançar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jbtnAvançar, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(308, 308, 308))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(26, 26, 26)
+                                                .addComponent(jlblHoraInicio))
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(31, 31, 31)
+                                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(37, 37, 37))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(54, 54, 54)
+                                        .addComponent(jlblData))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jSpinnerData, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jSpinnerHoraInicio, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jSpinnerHoraFim, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(316, 316, 316))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,66 +228,56 @@ public class Ecra_Cliente_MarcarConsulta extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbtnAvançar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbtnRetroceder, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jlblData)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSpinnerData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
+                .addComponent(jlblHoraInicio)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSpinnerHoraInicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSpinnerHoraFim, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
+                .addComponent(jbtnAvançar, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(81, 81, 81)
+                .addComponent(jbtnRetroceder, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 139, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtnAvançarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAvançarActionPerformed
-        Ecra_Cliente_Nova_Marcaçao pNovaMarcaçao = new Ecra_Cliente_Nova_Marcaçao(this.frame,cliente, selected);
-        this.frame.AvançarParaPainel(pNovaMarcaçao,this);
+                Marcacao marcacao = new Marcacao ((Date)jSpinnerData.getValue(), cliente, (Date)jSpinnerHoraInicio.getValue(), (Date)jSpinnerHoraFim.getValue()) ;
+                marcacao.EfetuarMarcaçao(cliente, consul);
+                OperacaoComSucesso Sucesso = new OperacaoComSucesso (this.frame, true) ;
+                Sucesso.setEnabled(true);
+                Sucesso.setVisible(true);
+                Repositorio.serializar("Repositorio");
+                this.frame.retroceder();
+                this.frame.retroceder();
     }//GEN-LAST:event_jbtnAvançarActionPerformed
 
     private void jbtnRetrocederActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnRetrocederActionPerformed
         this.frame.retroceder();
     }//GEN-LAST:event_jbtnRetrocederActionPerformed
 
-    private void jComboBoxEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxEspecialidadeActionPerformed
-        
-    }//GEN-LAST:event_jComboBoxEspecialidadeActionPerformed
-
-    private void jbtnPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPesquisarActionPerformed
-        DefaultTableModel PesquisaConsultorios = (DefaultTableModel)this.jTablePesquisa.getModel();
-        for (i = 0 ; i < PesquisaConsultorios.getRowCount() ; i ++) {
-            PesquisaConsultorios.removeRow(i);     
-        }
-        
-        for(Consultorio consul : Repositorio.getInstance().getTodosConsultorios()){
-            if(consul.getNome().equals(jTextFieldNomeConsultorio.getText()) || consul.getLocalidade().equals(jComboBoxLocalidade.getSelectedItem()) || consul.getEspecialidade().name().equals(jComboBoxEspecialidade.getSelectedItem())){
-            PesquisaConsultorios.addRow(new Object[]{consul.getIdConsultorio(), consul.getNome(), consul.getLocalidade(), consul.getEspecialidade()});
-            
-            }
-        }
-    }//GEN-LAST:event_jbtnPesquisarActionPerformed
-
-    private void jTablePesquisaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTablePesquisaMouseClicked
-        int linha = this.jTablePesquisa.getSelectedRow() ;
-        selected = Repositorio.getInstance().getConsultorio((int)this.jTablePesquisa.getValueAt(linha, 0)) ;
-        
-        this.jbtnAvançar.setVisible(true);
-        
-        
-    }//GEN-LAST:event_jTablePesquisaMouseClicked
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBoxEspecialidade;
-    private javax.swing.JComboBox<String> jComboBoxLocalidade;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTablePesquisa;
-    private javax.swing.JTextField jTextFieldNomeConsultorio;
+    private javax.swing.JSpinner jSpinnerData;
+    private javax.swing.JSpinner jSpinnerHoraFim;
+    private javax.swing.JSpinner jSpinnerHoraInicio;
     private javax.swing.JButton jbtnAvançar;
-    private javax.swing.JButton jbtnPesquisar;
     private javax.swing.JButton jbtnRetroceder;
+    private javax.swing.JLabel jlblData;
+    private javax.swing.JLabel jlblHoraInicio;
     // End of variables declaration//GEN-END:variables
 }

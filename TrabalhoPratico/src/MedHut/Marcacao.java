@@ -22,16 +22,54 @@ public class Marcacao implements Serializable{
     // variaveis consulta
     private int idConsulta;
     private Date dataConsulta;
+    private Date inicioConsulta;
+    private Date fimConsulta;
     private Cliente cliente;
+    private int idConsultorio;                        
+    private int idCliente; 
     private boolean confirmado;
     
     
     
-    public Marcacao(Date dataConsulta, Cliente cliente){
+    public Marcacao(Date dataConsulta, Cliente cliente, Date inicioConsulta, Date fimConsulta){
         idConsulta = Marcacao.numConsulta +1;
         this.dataConsulta = new Date();
         this.cliente = cliente;
+        this.inicioConsulta = inicioConsulta;
+        this.fimConsulta = fimConsulta;
         Marcacao.numConsulta++;
+    }
+
+    public int getIdConsultorio() {
+        return idConsultorio;
+    }
+
+    public void setIdConsultorio(int idConsultorio) {
+        this.idConsultorio = idConsultorio;
+    }
+
+    public int getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public Date getInicioConsulta() {
+        return inicioConsulta;
+    }
+
+    public void setInicioConsulta(Date inicioConsulta) {
+        this.inicioConsulta = inicioConsulta;
+    }
+
+    public Date getFimConsulta() {
+        return fimConsulta;
+    }
+
+    public void setFimConsulta(Date fimConsulta) {
+        this.fimConsulta = fimConsulta;
     }
 
     public static int getNumConsulta() {
@@ -74,5 +112,11 @@ public class Marcacao implements Serializable{
         this.confirmado = confirmado;
     }
     
+    public synchronized void EfetuarMarcaçao (Cliente cliente, Consultorio consul) {
+        this.setIdConsultorio(consul.getIdConsultorio());         
+        this.setIdCliente(cliente.getId());         
+        cliente.addMarcacao(this);              
+        consul.addMarcacao(this);           
+    }
     
 }

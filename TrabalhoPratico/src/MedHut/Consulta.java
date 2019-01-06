@@ -16,14 +16,12 @@ import java.io.Serializable;
 public class Consulta extends Marcacao implements Serializable{
     
     private float preco;
-    private Date inicioConsulta;
-    private Date fimConsulta;
     private boolean pago;
     private Set<ArtigoDespesa> despesas;
     private FaturaRecibo fatura;
 
-    public Consulta(Date dataConsulta, Cliente cliente) {
-        super(dataConsulta, cliente);
+    public Consulta(Date dataConsulta, Cliente cliente, Date inicioConsulta, Date fimConsulta) {
+        super(dataConsulta, cliente,inicioConsulta, fimConsulta);
         this.despesas = new HashSet<>();
     }
 
@@ -34,24 +32,7 @@ public class Consulta extends Marcacao implements Serializable{
     public void setPreco(float preco) {
         this.preco = preco;
     }
-
-    public Date getInicioConsulta() {
-        return inicioConsulta;
-    }
-
-    public void setInicioConsulta(Date inicioConsulta) {
-        this.inicioConsulta = inicioConsulta;
-    }
-
-    public Date getFimConsulta() {
-        return fimConsulta;
-    }
-
-    public void setFimConsulta(Date fimConsulta) {
-        this.fimConsulta = fimConsulta;
-    }
     
-
     public boolean isPago() {
         return pago;
     }
