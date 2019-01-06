@@ -181,8 +181,8 @@ public class Ecra_Admin extends javax.swing.JPanel {
 
     private void jButtonCriarAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCriarAdminActionPerformed
         // TODO add your handling code here:
-        Ecra_AdminRegistarAdmin AdminRegisAdmin = new Ecra_AdminRegistarAdmin(this.frame);
-        this.frame.AvançarParaPainel(AdminRegisAdmin, this);
+        Ecra_Admin_RegistarAdmin pAdminRegisAdmin = new Ecra_Admin_RegistarAdmin(this.frame, admin);
+        this.frame.AvançarParaPainel(pAdminRegisAdmin, this);
     }//GEN-LAST:event_jButtonCriarAdminActionPerformed
 
 

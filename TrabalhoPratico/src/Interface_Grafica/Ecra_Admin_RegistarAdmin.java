@@ -13,12 +13,13 @@ import MedHut.*;
  *
  * @author Pedro Silva
  */
-public class Ecra_AdminRegistarAdmin extends javax.swing.JPanel {
+public class Ecra_Admin_RegistarAdmin extends javax.swing.JPanel {
     private Frame_Inicial frame;
+    private Admin admin;
     /**
      * Creates new form Ecra_Admin
      */
-    public Ecra_AdminRegistarAdmin(Frame_Inicial frame) {
+    public Ecra_Admin_RegistarAdmin(Frame_Inicial frame, Admin admin) {
         initComponents();
         this.frame = frame;
         jLabelRepetido.setVisible(false);
@@ -191,6 +192,7 @@ public class Ecra_AdminRegistarAdmin extends javax.swing.JPanel {
         } catch (UsernameRepetidoException ex) {
             this.jLabelRepetido.setVisible(true);
         }
+        Repositorio.serializar("Repositorio");
         this.frame.retroceder();
     }//GEN-LAST:event_jButtonRegistarActionPerformed
 
