@@ -235,7 +235,7 @@ public class Repositorio implements Serializable{
     }
     
     public synchronized void adicionaConsultorioEspecialidade (Especialidade especialidade, Consultorio consul) throws ConsultorioRepetidoException, NomeRepetidoException{
-        List <Consultorio> hold2 = new ArrayList <> () ;
+        List <Consultorio> consultorios = new ArrayList <> () ;
         for (Map.Entry<Especialidade, List <Consultorio>> par : this.ConsultorioEspecialidade.entrySet()) {         // para cada entrada do mapa (chave->valor)
             for (Consultorio c : par.getValue()) {                                       // pecorrer os alojamento da entrada, isto é, os valores de uma chave
                 if (c.getIdConsultorio() == consul.getIdConsultorio()) {
@@ -247,8 +247,8 @@ public class Repositorio implements Serializable{
             }
         }
         if (! this.ConsultorioEspecialidade.containsKey(especialidade)) {        // se o mapa não contém a chave
-            hold2.add(consul) ;                       // adiciona o alojamento à lista de alojamentos temporária
-            this.ConsultorioEspecialidade.put(especialidade, hold2) ;             // cria a entrada no mapa loca(String)->hold(lista de alojamentos)
+            consultorios.add(consul) ;                       // adiciona o alojamento à lista de alojamentos temporária
+            this.ConsultorioEspecialidade.put(especialidade, consultorios) ;             // cria a entrada no mapa loca(String)->hold(lista de alojamentos)
         }
         else{                                       // o mapa já contém a chave
             this.ConsultorioEspecialidade.get(especialidade).add(consul) ;        // adiciona o alojamento à lista de alojamentos (esta lista é o valor, key->value)
