@@ -230,11 +230,36 @@ public class Repositorio implements Serializable{
         return this.ConsultorioEspecialidade.keySet();
     }
     
-    public synchronized List <Consultorio> getConsultoriosDisponiveis (String nome, String loc, Especialidade esp) {
-        List <Consultorio> listloc = this.ConsultorioLocalidade.get(loc) ;
-        List <Consultorio> listesp = this.ConsultorioEspecialidade.get(esp);
-        
-        return listloc, listesp;
+    public synchronized List<Consultorio> getTodosConsultorios () {
+        List<Consultorio> consultorios = new ArrayList <> () ;
+        for (Map.Entry<String, List <Consultorio>> mapConsul : this.ConsultorioLocalidade.entrySet()) {
+            for (Consultorio consul : mapConsul.getValue()) {
+                consultorios.add(consul) ;                 
+            }
+        }
+        return consultorios ;
+    }
+    
+    public synchronized Consultorio getConsultorio (int id) {
+        Consultorio con = null ;
+        for (Consultorio c : getTodosConsultorios()) {
+            if (c.getIdConsultorio() == id) {
+                con = c ;
+                break ;
+            }
+        } 
+        return con ;              
+    }
+    
+    public synchronized Consultorio getConsultorio (String nome) {
+        Consultorio con = null ;
+        for (Consultorio c : getTodosConsultorios()) {
+            if (c.getNome().equals(nome)) {
+                con = c ;
+                break ;
+            }
+        } 
+        return con ;              
     }
     
     
