@@ -295,6 +295,28 @@ public class Repositorio implements Serializable{
         return con ;              
     }
     
+    public synchronized void registoAdmin ( Admin admin ) throws UsernameRepetidoException{
+        boolean existe = false;
+        Utilizador utilizador = null;
+        for(Utilizador util: this.utilizadores){
+            if(util instanceof Admin){    // verifica se o nome de utilizador ja existe
+                if (util.getUser().equals(admin.getUser())) {
+                    existe = true;
+                    utilizador = util;
+                    break;
+                }
+                
+            }
+        }
+        if (existe) {
+            if (utilizador.getUser().equals(admin.getUser())) {
+                throw new UsernameRepetidoException("Erro: o nome de Utilizador " + admin.getUser() + "já existe.");
+            }
+        }
+        else{      // se nao existe, adiciona
+            this.utilizadores.add(admin);
+        }
+    }
     
     
        
