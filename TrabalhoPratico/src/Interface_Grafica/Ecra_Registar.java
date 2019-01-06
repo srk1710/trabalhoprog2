@@ -411,6 +411,7 @@ public class Ecra_Registar extends javax.swing.JPanel {
                     Sucesso2.setEnabled(true);
                     Sucesso2.setVisible(true);
                     Repositorio.serializar("Repositorio");
+                    this.frame.retroceder();
                 }
                 catch (NumCCRepetidoException ex) {
                     this.jLabelCCRepetido.setVisible(true);

@@ -180,6 +180,39 @@ public class Repositorio implements Serializable{
         }
     }
     
+    public synchronized void alterarInfoDono (Dono novo, Dono antigo) throws UsernameRepetidoException, NumCCRepetidoException, NIFRepetidoException, ContactoRepetidoException {
+        boolean existe = false ;
+        Utilizador hold = null;
+        for (Utilizador uti : this.utilizadores) {
+            if (uti instanceof Dono) {
+                if (((Dono)uti).getId() != novo.getId()) {
+                    if (((Dono)uti).getUser().equals(novo.getUser())||((Dono)uti).getId()==novo.getId()||((Dono)uti).getNumcc()==novo.getNumcc()||((Dono)uti).getNif()==novo.getNif()||((Dono)uti).getContacto()==novo.getContacto()) {
+                        existe = true ;
+                        hold = uti ;
+                        break ;
+                    }
+                }
+            }
+        }
+        if (existe) {
+            if (((Dono)hold).getUser().equals(novo.getUser())){
+                throw new UsernameRepetidoException ("ERRO: o User" + novo.getUser() + "ja existe!");
+            }
+            if (((Dono)hold).getNumcc()==novo.getNumcc()) {
+                throw new NumCCRepetidoException ("ERRO: o CC" + novo.getNumcc() + "ja existe!");
+            }
+            if (((Dono)hold).getNif()==novo.getNif()) {
+                throw new NIFRepetidoException ("ERRO: o Número Fiscal" + novo.getNif() + "ja existe!");
+            }
+            if (((Dono)hold).getContacto()==novo.getContacto()) {
+                throw new ContactoRepetidoException ("ERRO: o Telefone" + novo.getContacto() + "ja existe!");
+            }
+        }
+        else{
+            antigo = novo ;
+        }
+    }
+    
     public synchronized void adicionaConsultorioLocalidade (String localidade, Consultorio consul) throws ConsultorioRepetidoException, NomeRepetidoException{
         List <Consultorio> hold = new ArrayList <> () ;
         for (Map.Entry<String, List <Consultorio>> par : this.ConsultorioLocalidade.entrySet()) {         // para cada entrada do mapa (chave->valor)

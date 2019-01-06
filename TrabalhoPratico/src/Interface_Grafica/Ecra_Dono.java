@@ -70,6 +70,11 @@ public class Ecra_Dono extends javax.swing.JPanel {
         });
 
         jButton4.setText("Alterar Dados Pessoais");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jbtnSair.setText("Sair");
         jbtnSair.addActionListener(new java.awt.event.ActionListener() {
@@ -205,6 +210,11 @@ public class Ecra_Dono extends javax.swing.JPanel {
 
         }
     }//GEN-LAST:event_jbtnSairActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        Ecra_Dono_Dados pDono_Dados = new Ecra_Dono_Dados(this.frame, dono);
+        this.frame.AvançarParaPainel(pDono_Dados,this);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
