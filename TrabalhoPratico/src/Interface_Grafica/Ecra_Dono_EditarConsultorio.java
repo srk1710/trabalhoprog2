@@ -21,6 +21,11 @@ public class Ecra_Dono_EditarConsultorio extends javax.swing.JPanel {
         initComponents();
         this.frame = frame;
         this.consul = consul;
+        
+        this.jTextFieldNome.setText(consul.getNome());
+        this.jTextFieldMorada.setText(consul.getMorada());
+        this.jTextFieldLocalidade.setText(consul.getLocalidade());
+        this.jComboBoxEspecialidade.setSelectedItem(consul.getEspecialidade());
     }
 
     /**
@@ -47,6 +52,7 @@ public class Ecra_Dono_EditarConsultorio extends javax.swing.JPanel {
         jlblNome = new javax.swing.JLabel();
         jlblLocalidade = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 204, 102));
 
@@ -133,12 +139,14 @@ public class Ecra_Dono_EditarConsultorio extends javax.swing.JPanel {
         jlblLocalidade.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
         jlblLocalidade.setText("Localidade");
 
-        jButton1.setText("jButton1");
+        jButton1.setText("Retroceder");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+
+        jButton2.setText("Efetuar Alterações");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -176,7 +184,9 @@ public class Ecra_Dono_EditarConsultorio extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,7 +211,9 @@ public class Ecra_Dono_EditarConsultorio extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBoxEspecialidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(66, 66, 66)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -221,6 +233,7 @@ public class Ecra_Dono_EditarConsultorio extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBoxEspecialidade;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

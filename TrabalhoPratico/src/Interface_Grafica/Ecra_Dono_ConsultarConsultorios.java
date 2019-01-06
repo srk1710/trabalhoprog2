@@ -227,7 +227,7 @@ public class Ecra_Dono_ConsultarConsultorios extends javax.swing.JPanel {
     }//GEN-LAST:event_jbtnRetrocederActionPerformed
 
     private void jbtnEditarConsultorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnEditarConsultorioActionPerformed
-        Ecra_Dono_EditarConsultorio pEditarConsultorio = new Ecra_Dono_EditarConsultorio(this.frame,dono);
+        Ecra_Dono_EditarConsultorio pEditarConsultorio = new Ecra_Dono_EditarConsultorio(this.frame,selected);
         
     }//GEN-LAST:event_jbtnEditarConsultorioActionPerformed
 
