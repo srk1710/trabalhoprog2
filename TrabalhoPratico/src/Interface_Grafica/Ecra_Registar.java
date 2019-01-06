@@ -385,6 +385,9 @@ public class Ecra_Registar extends javax.swing.JPanel {
             case "Cliente":
                 try {
                     Repositorio.getInstance().RegistarConta(new Cliente(this.jTextFieldNome.getText(), cc, nif, contacto, this.jTextFieldMorada.getText(), this.jTextFieldLocalidade.getText(), this.jTextFieldUser.getText(), this.jTextFieldPasswd.getText()));
+                    OperacaoComSucesso Sucesso1 = new OperacaoComSucesso(this.frame, true);
+                    Sucesso1.setEnabled(true);
+                    Sucesso1.setVisible(true);
                     Repositorio.serializar("Repositorio");
                     this.frame.retroceder();
                 } 
@@ -404,6 +407,9 @@ public class Ecra_Registar extends javax.swing.JPanel {
             case "Dono":
                 try {
                     Repositorio.getInstance().RegistarConta(new Dono(this.jTextFieldNome.getText(), cc, nif, contacto, this.jTextFieldMorada.getText(), this.jTextFieldLocalidade.getText(), this.jTextFieldUser.getText(), this.jTextFieldPasswd.getText()));
+                    OperacaoComSucesso Sucesso2 = new OperacaoComSucesso(this.frame, true);
+                    Sucesso2.setEnabled(true);
+                    Sucesso2.setVisible(true);
                     Repositorio.serializar("Repositorio");
                 }
                 catch (NumCCRepetidoException ex) {

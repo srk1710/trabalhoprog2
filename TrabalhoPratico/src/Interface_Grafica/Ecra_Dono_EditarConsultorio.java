@@ -6,6 +6,8 @@
 package Interface_Grafica;
 
 import MedHut.Consultorio;
+import MedHut.Especialidade;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -25,6 +27,7 @@ public class Ecra_Dono_EditarConsultorio extends javax.swing.JPanel {
         this.jTextFieldNome.setText(consul.getNome());
         this.jTextFieldMorada.setText(consul.getMorada());
         this.jTextFieldLocalidade.setText(consul.getLocalidade());
+        this.jComboBoxEspecialidade.setModel(new DefaultComboBoxModel(Especialidade.values()));
         this.jComboBoxEspecialidade.setSelectedItem(consul.getEspecialidade());
     }
 
@@ -147,6 +150,11 @@ public class Ecra_Dono_EditarConsultorio extends javax.swing.JPanel {
         });
 
         jButton2.setText("Efetuar Alterações");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -229,6 +237,19 @@ public class Ecra_Dono_EditarConsultorio extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.frame.retroceder();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        consul.setNome(this.jTextFieldNome.getText());
+        consul.setMorada(this.jTextFieldMorada.getText());
+        consul.setLocalidade(this.jTextFieldLocalidade.getText());
+        consul.setEspecialidade((Especialidade)jComboBoxEspecialidade.getSelectedItem());
+        OperacaoComSucesso Sucesso = new OperacaoComSucesso(this.frame, true);
+        Sucesso.setEnabled(true);
+        Sucesso.setVisible(true);
+        this.frame.retroceder();
+        this.frame.retroceder();
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
