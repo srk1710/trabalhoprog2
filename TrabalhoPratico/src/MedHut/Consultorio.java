@@ -104,6 +104,9 @@ public class Consultorio implements Serializable{
         this.marcacoes = marcacoes;
     }
     
+    public void addMarcacao(Marcacao marcacao){
+        this.marcacoes.add(marcacao);
+    }
     
     
 }

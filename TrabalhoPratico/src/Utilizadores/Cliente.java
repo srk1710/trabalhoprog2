@@ -34,6 +34,26 @@ public class Cliente extends Conta implements Serializable {
         this.marcacoes = marcacoes;
     }
     
+    public Marcacao getMarcaçaoAtual (Date data) {
+        Marcacao marcacao = null ;
+        for (Marcacao m : this.marcacoes) {
+            if (data.after(m.getInicioConsulta()) && data.before(m.getFimConsulta())) {
+                marcacao = m ;
+            }
+        }
+        return marcacao ;
+    }
+    
+    public List<Marcacao> getMarcacoesConfirmadas () {
+        List<Marcacao> marcacao = new ArrayList <> () ;
+        for (Marcacao m : this.marcacoes) {
+            if (m.isConfirmado() == true) {
+                marcacao.add(m) ;
+            }
+        }
+        return marcacao ;
+    }
+    
     public void addMarcacao(Marcacao marcacao){
         this.marcacoes.add(marcacao);
     }

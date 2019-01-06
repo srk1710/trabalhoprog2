@@ -187,7 +187,8 @@ public class Ecra_Cliente extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbtnMarcacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnMarcacoesActionPerformed
-        // TODO add your handling code here:
+        Ecra_Cliente_Consultas pConsultas = new Ecra_Cliente_Consultas (this.frame, cliente) ;
+        this.frame.AvançarParaPainel(pConsultas, this);
     }//GEN-LAST:event_jbtnMarcacoesActionPerformed
 
     private void jbtnPontosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPontosActionPerformed

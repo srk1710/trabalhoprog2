@@ -5,17 +5,28 @@
  */
 package Interface_Grafica;
 
+import MedHut.Consultorio;
+import MedHut.Marcacao;
+import MedHut.Repositorio;
+import Utilizadores.Cliente;
+import java.util.Date;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Pedro Silva
  */
 public class Ecra_Cliente_Consultas extends javax.swing.JPanel {
-
+    private Frame_Inicial frame;
+    private Cliente cliente;
     /**
      * Creates new form Ecra_Cliente_Consultas
      */
-    public Ecra_Cliente_Consultas() {
+    public Ecra_Cliente_Consultas(Frame_Inicial frame, Cliente cliente) {
         initComponents();
+        this.frame = frame;
+        this.cliente = cliente;
+        
     }
 
     /**
@@ -33,6 +44,7 @@ public class Ecra_Cliente_Consultas extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
+        jTableMarcacoes = new javax.swing.JTable();
         jComboBox1 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
@@ -93,6 +105,16 @@ public class Ecra_Cliente_Consultas extends javax.swing.JPanel {
                 .addContainerGap(234, Short.MAX_VALUE))
         );
 
+        jTableMarcacoes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Id Consulta", "Consultorio", "Data", "Hora de Inicio", "Hora de Fim"
+            }
+        ));
+        jScrollPane1.setViewportView(jTableMarcacoes);
+
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Consultas Marcadas", "Consultas Confirmadas", "Todas as Consultas" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,27 +142,28 @@ public class Ecra_Cliente_Consultas extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 774, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 21, Short.MAX_VALUE))))
+                        .addGap(0, 21, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(183, 183, 183)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(146, 146, 146))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jComboBox1)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(27, 27, 27)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 521, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40)
@@ -156,7 +179,38 @@ public class Ecra_Cliente_Consultas extends javax.swing.JPanel {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        int i = 0 ;
+        DefaultTableModel listaMarcaçoes = (DefaultTableModel)this.jTableMarcacoes.getModel() ;
+        for (i = 0 ; i < listaMarcaçoes.getRowCount() ; i ++) {
+            listaMarcaçoes.removeRow(i);     
+        }
+        switch (((String)this.jComboBox1.getSelectedItem())) {
+            case "Consulta Marcada" : 
+                if (cliente.getMarcaçaoAtual(new Date ()) != null) {
+                    Marcacao m = cliente.getMarcaçaoAtual(new Date ()) ;  
+                    Consultorio consul1 = Repositorio.getInstance().getConsultorio(m.getIdConsultorio()) ;
+                    listaMarcaçoes.addRow(new Object []{m.getIdConsulta(), consul1.getNome(), m.getDataConsulta(), m.getInicioConsulta(), m.getFimConsulta()});
+                } 
+                break ;
+            case "Consultas Confirmadas" :
+                    if(cliente.getMarcacoesConfirmadas() != null){
+                        for (Marcacao m2 : cliente.getMarcacoesConfirmadas()){
+                        Consultorio consul2 = Repositorio.getInstance().getConsultorio(m2.getIdConsultorio()) ;
+                        listaMarcaçoes.addRow(new Object []{m2.getIdConsulta(), consul2.getNome(), m2.getDataConsulta(), m2.getInicioConsulta(), m2.getFimConsulta()});
+                        }
+                    }
+                break ;
+            case "Todas as Consultas" :
+                if (cliente.getMarcacoes() != null) {
+                    for (Marcacao m3 : cliente.getMarcacoes()) {
+                        Consultorio consul3 = Repositorio.getInstance().getConsultorio(m3.getIdConsultorio()) ;
+                        listaMarcaçoes.addRow(new Object []{m3.getIdConsulta(), consul3.getNome(), m3.getDataConsulta(), m3.getInicioConsulta().getTime(), m3.getFimConsulta()});
+                    }
+                }
+                break ;
+            
+            default: 
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
@@ -171,5 +225,6 @@ public class Ecra_Cliente_Consultas extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTableMarcacoes;
     // End of variables declaration//GEN-END:variables
 }

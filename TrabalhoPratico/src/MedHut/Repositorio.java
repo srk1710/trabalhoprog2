@@ -295,6 +295,8 @@ public class Repositorio implements Serializable{
         return con ;              
     }
     
+    
+    
     public synchronized void registoAdmin ( Admin admin ) throws UsernameRepetidoException{
         boolean existe = false;
         Utilizador utilizador = null;
