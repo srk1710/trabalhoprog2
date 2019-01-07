@@ -251,7 +251,6 @@ public class Ecra_Cliente_MarcarConsulta extends javax.swing.JPanel {
         for (i = 0 ; i < PesquisaConsultorios.getRowCount() ; i ++) {
             PesquisaConsultorios.removeRow(i);     
         }
-        
         for(Consultorio consul : Repositorio.getInstance().getTodosConsultorios()){
             if(consul.getNome().equals(jTextFieldNomeConsultorio.getText()) || consul.getLocalidade().equals(jComboBoxLocalidade.getSelectedItem()) || consul.getEspecialidade().name().equals(jComboBoxEspecialidade.getSelectedItem())){
             PesquisaConsultorios.addRow(new Object[]{consul.getIdConsultorio(), consul.getNome(), consul.getLocalidade(), consul.getEspecialidade()});
