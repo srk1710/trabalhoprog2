@@ -189,14 +189,14 @@ public class Ecra_Cliente_Consultas extends javax.swing.JPanel {
                 if (cliente.getMarcaçaoAtual(new Date ()) != null) {
                     Marcacao m = cliente.getMarcaçaoAtual(new Date ()) ;  
                     Consultorio consul1 = Repositorio.getInstance().getConsultorio(m.getIdConsultorio()) ;
-                    listaMarcaçoes.addRow(new Object []{m.getIdConsulta(), consul1.getNome(), m.getDataConsulta(), m.getInicioConsulta(), m.getFimConsulta()});
+                    listaMarcaçoes.addRow(new Object []{m.getIdConsulta(), consul1.getNome(),m.getDataConsulta().getDate() + "/" + m.getDataConsulta().getMonth() + "/" + m.getDataConsulta().getYear(), m.getInicioConsulta().getHours()+ ":" + m.getInicioConsulta().getMinutes(), m.getFimConsulta()+ ":" + m.getFimConsulta().getMinutes()});
                 } 
                 break ;
             case "Consultas Confirmadas" :
                     if(cliente.getMarcacoesConfirmadas() != null){
                         for (Marcacao m2 : cliente.getMarcacoesConfirmadas()){
                         Consultorio consul2 = Repositorio.getInstance().getConsultorio(m2.getIdConsultorio()) ;
-                        listaMarcaçoes.addRow(new Object []{m2.getIdConsulta(), consul2.getNome(), m2.getDataConsulta(), m2.getInicioConsulta(), m2.getFimConsulta()});
+                        listaMarcaçoes.addRow(new Object []{m2.getIdConsulta(), consul2.getNome(), m2.getDataConsulta().getDate() + "/" + m2.getDataConsulta().getMonth() + "/" + m2.getDataConsulta().getYear(), m2.getInicioConsulta().getHours()+ ":" + m2.getInicioConsulta().getMinutes(), m2.getFimConsulta()+ ":" + m2.getFimConsulta().getMinutes()});
                         }
                     }
                 break ;
@@ -204,7 +204,7 @@ public class Ecra_Cliente_Consultas extends javax.swing.JPanel {
                 if (cliente.getMarcacoes() != null) {
                     for (Marcacao m3 : cliente.getMarcacoes()) {
                         Consultorio consul3 = Repositorio.getInstance().getConsultorio(m3.getIdConsultorio()) ;
-                        listaMarcaçoes.addRow(new Object []{m3.getIdConsulta(), consul3.getNome(), m3.getDataConsulta(), m3.getInicioConsulta().getTime(), m3.getFimConsulta()});
+                        listaMarcaçoes.addRow(new Object []{m3.getIdConsulta(), consul3.getNome(), m3.getDataConsulta().getDate() + "/" + m3.getDataConsulta().getMonth() + "/" + m3.getDataConsulta().getYear(), m3.getInicioConsulta().getHours()+ ":" + m3.getInicioConsulta().getMinutes() , m3.getFimConsulta().getHours()+ ":" + m3.getFimConsulta().getMinutes()});
                     }
                 }
                 break ;
