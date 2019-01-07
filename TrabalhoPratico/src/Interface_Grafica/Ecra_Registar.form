@@ -96,7 +96,7 @@
                               <Component id="jLabelUserRepetido" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="61" max="32767" attributes="0"/>
+                      <EmptySpace pref="65" max="32767" attributes="0"/>
                   </Group>
                   <Component id="jSeparator1" max="32767" attributes="0"/>
               </Group>
@@ -451,22 +451,22 @@
     </Container>
     <Component class="javax.swing.JLabel" name="jLabelCCRepetido">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Repetido!"/>
+        <Property name="text" type="java.lang.String" value="Repetido"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelNIFRepetido">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Repetido!"/>
+        <Property name="text" type="java.lang.String" value="Repetido"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelUserRepetido">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Repetido!"/>
+        <Property name="text" type="java.lang.String" value="Repetido"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelContactoRepetido">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Repetido!"/>
+        <Property name="text" type="java.lang.String" value="Repetido"/>
       </Properties>
     </Component>
   </SubComponents>

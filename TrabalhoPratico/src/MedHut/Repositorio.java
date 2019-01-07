@@ -25,6 +25,7 @@ public class Repositorio implements Serializable{
     private Map<Especialidade,List<Consultorio>> ConsultorioEspecialidade;
     private Map<String, List<Consultorio>> ConsultorioLocalidade;
     private List<Utilizador> utilizadores;
+    private List<Conta> contas;
     
     
     private static Repositorio bd=null;
@@ -33,6 +34,7 @@ public class Repositorio implements Serializable{
         this.ConsultorioEspecialidade = new HashMap<>();
         this.ConsultorioLocalidade = new HashMap<>();
         utilizadores = new ArrayList<>();
+        contas = new ArrayList<>();
         utilizadores.add(new Admin ("admin", "admin")) ; //Utilizador por defeito
     }
     
@@ -51,6 +53,9 @@ public class Repositorio implements Serializable{
         return utilizadores;
     }
     
+    public synchronized List<Conta> getContas(){
+        return contas;
+    }
     // Calcula o número de utilizadores.
     public synchronized int getNumeroUtilizadores () {
         return utilizadores.size() ;
@@ -87,6 +92,7 @@ public class Repositorio implements Serializable{
          }
           else{
               this.utilizadores.add(conta) ;
+              this.contas.add(conta);
           }
      }
      

@@ -216,13 +216,13 @@ public class Ecra_Registar extends javax.swing.JPanel {
                 .addContainerGap(210, Short.MAX_VALUE))
         );
 
-        jLabelCCRepetido.setText("Repetido!");
+        jLabelCCRepetido.setText("Repetido");
 
-        jLabelNIFRepetido.setText("Repetido!");
+        jLabelNIFRepetido.setText("Repetido");
 
-        jLabelUserRepetido.setText("Repetido!");
+        jLabelUserRepetido.setText("Repetido");
 
-        jLabelContactoRepetido.setText("Repetido!");
+        jLabelContactoRepetido.setText("Repetido");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -286,7 +286,7 @@ public class Ecra_Registar extends javax.swing.JPanel {
                                     .addComponent(jTextFieldPasswd, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jLabelUserRepetido)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE))
                     .addComponent(jSeparator1))
                 .addGap(117, 117, 117))
         );

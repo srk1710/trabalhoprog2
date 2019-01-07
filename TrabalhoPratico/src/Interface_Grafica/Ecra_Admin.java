@@ -123,6 +123,11 @@ public class Ecra_Admin extends javax.swing.JPanel {
         });
 
         jButtonConsultarUtilizadores.setText("Consultar Utilizadores");
+        jButtonConsultarUtilizadores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonConsultarUtilizadoresActionPerformed(evt);
+            }
+        });
 
         jButton5.setText("Sair");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -203,6 +208,12 @@ public class Ecra_Admin extends javax.swing.JPanel {
 
         }
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButtonConsultarUtilizadoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConsultarUtilizadoresActionPerformed
+        // TODO add your handling code here:
+        Ecra_Admin_ConsultarUtil eAdminConsultaUtil = new Ecra_Admin_ConsultarUtil(this.frame);
+        this.frame.AvançarParaPainel(eAdminConsultaUtil, this);
+    }//GEN-LAST:event_jButtonConsultarUtilizadoresActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
