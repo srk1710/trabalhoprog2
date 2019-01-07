@@ -5,6 +5,8 @@
  */
 package Interface_Grafica;
 
+import Exceptions.ErroCrucialException;
+import MedHut.Repositorio;
 import Utilizadores.Admin;
 
 /**
@@ -123,6 +125,11 @@ public class Ecra_Admin extends javax.swing.JPanel {
         jButtonConsultarUtilizadores.setText("Consultar Utilizadores");
 
         jButton5.setText("Sair");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/logo_admin.png"))); // NOI18N
@@ -184,6 +191,18 @@ public class Ecra_Admin extends javax.swing.JPanel {
         Ecra_Admin_RegistarAdmin pAdminRegisAdmin = new Ecra_Admin_RegistarAdmin(this.frame, admin);
         this.frame.AvançarParaPainel(pAdminRegisAdmin, this);
     }//GEN-LAST:event_jButtonCriarAdminActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        try {
+            Repositorio.getInstance().logOutUtil(admin);
+            Repositorio.serializar("Repositorio");
+            this.frame.retroceder() ;
+            this.frame.retroceder() ;
+        } catch (ErroCrucialException ex) {
+
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
