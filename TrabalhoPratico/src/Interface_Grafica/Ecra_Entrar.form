@@ -151,7 +151,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabelContaNaoReconhecida">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Conta nao Reconhecida!"/>
+        <Property name="text" type="java.lang.String" value="Conta n&#xe3;o reconhecida."/>
       </Properties>
     </Component>
   </SubComponents>

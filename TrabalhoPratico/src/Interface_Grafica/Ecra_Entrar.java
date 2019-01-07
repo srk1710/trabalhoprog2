@@ -81,7 +81,7 @@ public class Ecra_Entrar extends javax.swing.JPanel {
         jLabel6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabel6.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
-        jLabelContaNaoReconhecida.setText("Conta nao Reconhecida!");
+        jLabelContaNaoReconhecida.setText("Conta não reconhecida.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
