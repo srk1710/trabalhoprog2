@@ -130,6 +130,11 @@ public class Ecra_Cliente_Consultas extends javax.swing.JPanel {
         });
 
         jButton2.setText("Retroceder");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("Cancelar Marcação");
 
@@ -139,7 +144,6 @@ public class Ecra_Cliente_Consultas extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(183, 183, 183)
@@ -204,7 +208,7 @@ public class Ecra_Cliente_Consultas extends javax.swing.JPanel {
                 if (cliente.getMarcacoes() != null) {
                     for (Marcacao m3 : cliente.getMarcacoes()) {
                         Consultorio consul3 = Repositorio.getInstance().getConsultorio(m3.getIdConsultorio()) ;
-                        listaMarcaçoes.addRow(new Object []{m3.getIdConsulta(), consul3.getNome(), m3.getDataConsulta().getDate() + "/" + m3.getDataConsulta().getMonth() + "/" + m3.getDataConsulta().getYear(), m3.getInicioConsulta().getHours()+ ":" + m3.getInicioConsulta().getMinutes() , m3.getFimConsulta().getHours()+ ":" + m3.getFimConsulta().getMinutes()});
+                        listaMarcaçoes.addRow(new Object []{m3.getIdConsulta(), consul3.getNome(), m3.getDataConsulta(), m3.getInicioConsulta().getHours()+ ":" + m3.getInicioConsulta().getMinutes() , m3.getFimConsulta().getHours()+ ":" + m3.getFimConsulta().getMinutes()});
                     }
                 }
                 break ;
@@ -212,6 +216,11 @@ public class Ecra_Cliente_Consultas extends javax.swing.JPanel {
             default: 
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        this.frame.retroceder();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
