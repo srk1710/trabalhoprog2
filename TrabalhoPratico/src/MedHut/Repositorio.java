@@ -35,7 +35,7 @@ public class Repositorio implements Serializable{
         this.ConsultorioLocalidade = new HashMap<>();
         utilizadores = new ArrayList<>();
         contas = new ArrayList<>();
-        utilizadores.add(new Admin ("admin", "admin")) ; //Utilizador por defeito
+        utilizadores.add(new Admin ("admin", "admin")) ; //Administrador por defeito
     }
     
     
