@@ -215,43 +215,43 @@ public class Repositorio implements Serializable{
     
     public synchronized void adicionaConsultorioLocalidade (String localidade, Consultorio consul) throws ConsultorioRepetidoException, NomeRepetidoException{
         List <Consultorio> consultorios = new ArrayList <> () ;
-        for (Map.Entry<String, List <Consultorio>> par : this.ConsultorioLocalidade.entrySet()) {         // para cada entrada do mapa (chave->valor)
-            for (Consultorio c : par.getValue()) {                                       // pecorrer os alojamento da entrada, isto é, os valores de uma chave
+        for (Map.Entry<String, List <Consultorio>> par : this.ConsultorioLocalidade.entrySet()) {         
+            for (Consultorio c : par.getValue()) {                                      
                 if (c.getIdConsultorio() == consul.getIdConsultorio()) {
-                    throw new ConsultorioRepetidoException ("ERRO: o Alojamento, com identificador:" + consul.getIdConsultorio() + ", ja existe!");
+                    throw new ConsultorioRepetidoException ("ERRO: o Consultorio, com identificador:" + consul.getIdConsultorio() + ", ja existe!");
                 }
                 if (c.getNome().equals(consul.getNome())) {
                     throw new NomeRepetidoException ("ERRO: este nome ja existe !") ;
                 }
             }
         }
-        if (! this.ConsultorioLocalidade.containsKey(localidade)) {        // se o mapa não contém a chave
-            consultorios.add(consul) ;                       // adiciona o alojamento à lista de alojamentos temporária
-            this.ConsultorioLocalidade.put(localidade, consultorios) ;             // cria a entrada no mapa loca(String)->utilizador(lista de alojamentos)
+        if (! this.ConsultorioLocalidade.containsKey(localidade)) {        
+            consultorios.add(consul) ;                       
+            this.ConsultorioLocalidade.put(localidade, consultorios) ;             
         }
-        else{                                       // o mapa já contém a chave
-            this.ConsultorioLocalidade.get(localidade).add(consul) ;        // adiciona o alojamento à lista de alojamentos (esta lista é o valor, key->value)
+        else{                                       
+            this.ConsultorioLocalidade.get(localidade).add(consul) ;        
         }
     }
     
     public synchronized void adicionaConsultorioEspecialidade (Especialidade especialidade, Consultorio consul) throws ConsultorioRepetidoException, NomeRepetidoException{
         List <Consultorio> consultorios = new ArrayList <> () ;
-        for (Map.Entry<Especialidade, List <Consultorio>> par : this.ConsultorioEspecialidade.entrySet()) {         // para cada entrada do mapa (chave->valor)
-            for (Consultorio c : par.getValue()) {                                       // pecorrer os alojamento da entrada, isto é, os valores de uma chave
+        for (Map.Entry<Especialidade, List <Consultorio>> par : this.ConsultorioEspecialidade.entrySet()) {         
+            for (Consultorio c : par.getValue()) {                                       
                 if (c.getIdConsultorio() == consul.getIdConsultorio()) {
-                    throw new ConsultorioRepetidoException ("ERRO: o Alojamento, com identificador:" + consul.getIdConsultorio() + ", ja existe!");
+                    throw new ConsultorioRepetidoException ("ERRO: o Consultorio, com identificador:" + consul.getIdConsultorio() + ", ja existe!");
                 }
                 if (c.getNome().equals(consul.getNome())) {
                     throw new NomeRepetidoException ("ERRO: este nome ja existe !") ;
                 }
             }
         }
-        if (! this.ConsultorioEspecialidade.containsKey(especialidade)) {        // se o mapa não contém a chave
-            consultorios.add(consul) ;                       // adiciona o alojamento à lista de alojamentos temporária
-            this.ConsultorioEspecialidade.put(especialidade, consultorios) ;             // cria a entrada no mapa loca(String)->utilizador(lista de alojamentos)
+        if (! this.ConsultorioEspecialidade.containsKey(especialidade)) {        
+            consultorios.add(consul) ;                       
+            this.ConsultorioEspecialidade.put(especialidade, consultorios) ;             
         }
-        else{                                       // o mapa já contém a chave
-            this.ConsultorioEspecialidade.get(especialidade).add(consul) ;        // adiciona o alojamento à lista de alojamentos (esta lista é o valor, key->value)
+        else{                                       
+            this.ConsultorioEspecialidade.get(especialidade).add(consul) ;        
         }
     }
     
